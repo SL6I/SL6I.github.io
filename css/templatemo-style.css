@@ -168,10 +168,28 @@ h1,h2,h3,h4,h5
 }
 /* end simpletextrotator */
 
-/* start home */       
+/* start home */   
+@media only screen and (max-width: 992px) and (min-width: 100px){
+    #home
+	    {
+            background: url('../images/home-bg-sm.jpg');
+        }
+}
+   
+@media only screen and (max-width: 1200px) and (min-width: 992px){
+    #home
+	    {
+            background: url('../images/home-bg-md.jpg');
+        }
+}    
+@media only screen and (min-width: 1200px){
+    #home
+	    {
+            background: url('../images/home-bg-lg.jpg');
+        }
+}    
 #home
 	{
-        background: url('../images/home-bg.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         padding-top: 120px;
