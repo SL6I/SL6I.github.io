@@ -591,6 +591,7 @@
         * Creates a vertical navigation bar.
         */
         function addVerticalNavigation(){
+            return;
             $body.append('<div id="' + SECTION_NAV + '"><ul></ul></div>');
             nav = $(SECTION_NAV_SEL);
 
