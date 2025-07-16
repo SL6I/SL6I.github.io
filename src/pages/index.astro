@@ -1,0 +1,380 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+// Load all content
+const siteConfig = await getEntry('siteConfig', 'site-config');
+const personalInfo = await getEntry('personalInfo', 'personal-info');
+// const portfolio = await getCollection('portfolio');
+// const awards = await getCollection('awards');
+// const testimonials = await getCollection('testimonials');
+const blogPosts = await getCollection('blog');
+
+const site = siteConfig?.data!;
+const personal = personalInfo?.data!;
+
+// Sort collections by order
+// const sortedPortfolio = portfolio.sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
+// const sortedAwards = awards.sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
+// const sortedTestimonials = testimonials.sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
+// Show all blog posts, sorted by publish date (newest first)
+const featuredBlogPosts = blogPosts.sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+---
+<Layout title={site.siteTitle} description={site.siteDescription}>
+	<div class="container mx-auto max-w-[1320px] px-5 md:px-10 xl:px-5">
+		<!-- Hero section -->
+		<div id="about" class="py-24 md:py-28 xl:py-32 text-center">			
+			<h1
+			class="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-outfit font-bold stroke-text"
+		>
+			{site.heroName}
+		</h1>
+		</div>
+		<!-- end Hero section -->
+
+		<!-- About section -->
+		<div class="lg:flex space-y-8 lg:space-y-0">				
+			<div class="w-full lg:w-1/3 lg:order-2 text-center">
+				<img
+					class="inline-block w-[240px] h-[240px] md:w-[270px] md:h-[270px] xl:w-[320px] xl:h-[320px] rounded-full"
+					src={personal.avatar}
+					alt={personal.name}
+				/>
+			</div>
+			<div
+				class="w-full lg:w-1/3 lg:order-1 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 gap-6 lg:gap-8"
+			>					<div>
+					<h6
+						class="font-outfit font-medium tracking-wider uppercase text-sm text-white mb-2"
+					>
+						Biography
+					</h6>
+					<p class="text-white/70 leading-[1.75]">
+						{personal.biography}
+					</p>
+				</div>
+				<div>
+					<h6
+						class="font-outfit font-medium tracking-wider uppercase text-sm text-white mb-2"
+					>
+						Skills
+					</h6>						<ul class="text-white/70">
+						{personal.skills.map((skill: string, index: number) => (
+							<li class={`list-none inline-block ${index === 0 ? 'pr-[4px]' : 'relative pl-[14px] pr-[4px] before:content-[\'\'] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-[5px] before:h-[5px] before:rounded-md before:bg-white/80'}`}>
+								{skill}
+							</li>
+						))}
+					</ul>
+				</div>					<div>
+					<h6
+						class="font-outfit font-medium tracking-wider uppercase text-sm text-white mb-2"
+					>
+						Connect
+					</h6>
+					<ul class="space-x-1">
+						{site.socialLinks.map((social: any) => (
+							<li class="list-none inline-block">
+								<a
+									class="inline-block group w-[44px] h-[44px] rounded-full bg-white/15 text-white relative z-[1] overflow-hidden before:content-[''] before:absolute before:-z-[1] before:left-0 before:top-0 before:w-full before:h-full before:bg-themeGradient before:opacity-0 hover:before:opacity-20 before:transition-all before:ease-linear before:duration-100"
+									href={social.url}
+									title={social.name}
+								>
+									<i
+										class={`${social.icon} absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all ease-out duration-200 group-hover:top-0 group-hover:invisible group-hover:opacity-0`}
+									></i>
+									<i
+										class={`${social.icon} absolute top-full left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all ease-out duration-200 invisible opacity-0 group-hover:top-1/2 group-hover:visible group-hover:opacity-100`}
+									></i>
+								</a>
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>			<div
+				class="w-full lg:w-1/3 order-3 grid grid-cols-3 lg:grid-cols-1 gap-6 lg:gap-7 lg:text-right"
+			>
+				{personal.stats.map((stat: any) => (
+					<div>
+						<h6
+							class="font-outfit font-medium tracking-wider uppercase text-sm text-white mb-2"
+						>
+							{stat.title}
+						</h6>
+						<span
+							class="text-4xl lg:text-5xl xl:text-6xl font-outfit font-light text-white"
+						>{stat.value}</span>
+					</div>
+				))}
+			</div>
+		</div>
+		<!-- end About section -->
+
+		<!-- Blog section -->
+		<div id="blog" class="px-5 lg:px-10 py-24 xl:py-28">
+			<div class="bg-darkBg rounded-2xl overflow-hidden py-20">
+				<div class="container mx-auto max-w-[1320px] px-5">
+					<div class="md:w-4/5 lg:w-3/4 md:mx-auto">
+						<h6
+							class="pl-[20px] relative font-outfit font-medium text-sm uppercase tracking-wider text-white/40 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-[12px] before:h-[12px] before:rounded-full before:border-2 before:border-white/30"
+						>
+							Journal
+						</h6>
+						<h2
+							class="font-outfit font-medium text-4xl md:text-5xl lg:text-6xl text-white mt-2"
+						>
+							Blog <span
+								class="bg-themeGradient bg-clip-text text-transparent"
+								>Posts</span>
+						</h2>
+						<p class="leading-[1.75] text-white/70 mt-3">
+							{site.blogDescription || "Discover insights, tutorials, and expert thoughts on artificial intelligence, machine learning, and more through my blog posts :)."}
+						</p>
+						<div class="space-x-1 mt-6">
+							<div
+								class="swiper-blog-prev inline-block group w-[50px] h-[50px] rounded-full cursor-pointer bg-white/15 text-white relative z-[1] overflow-hidden before:content-[''] before:absolute before:-z-[1] before:left-0 before:top-0 before:w-full before:h-full before:bg-themeGradient before:opacity-0 hover:before:opacity-20 before:transition-all before:ease-linear before:duration-100 cursor-link"
+							>
+								<i
+									class="bi bi-arrow-left absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all ease-out duration-200 group-hover:top-0 group-hover:invisible group-hover:opacity-0"
+								></i>
+								<i
+									class="bi bi-arrow-left absolute top-full left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all ease-out duration-200 invisible opacity-0 group-hover:top-1/2 group-hover:visible group-hover:opacity-100"
+								></i>
+							</div>
+							<div
+								class="swiper-blog-next inline-block group w-[50px] h-[50px] rounded-full cursor-pointer bg-white/15 text-white relative z-[1] overflow-hidden before:content-[''] before:absolute before:-z-[1] before:left-0 before:top-0 before:w-full before:h-full before:bg-themeGradient before:opacity-0 hover:before:opacity-20 before:transition-all before:ease-linear before:duration-100 cursor-link"
+							>
+								<i
+									class="bi bi-arrow-right absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all ease-out duration-200 group-hover:top-0 group-hover:invisible group-hover:opacity-0"
+								></i>
+								<i
+									class="bi bi-arrow-right absolute top-full left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all ease-out duration-200 invisible opacity-0 group-hover:top-1/2 group-hover:visible group-hover:opacity-100"
+								></i>
+							</div>
+						</div>
+					</div>
+					<div
+						class="swiper blog-slider overflow-visible mt-6 xl:mt-14"
+					>
+						<div class="swiper-wrapper">
+						{featuredBlogPosts.map((post: any) => (
+							<div class="swiper-slide">
+								<div class="group/blog-box">
+									<!-- Image -->
+									<div
+										class="overflow-hidden relative rounded-2xl"
+									>
+										<a
+											class="group block relative before:content-[''] before:z-[1] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-themeGradient before:opacity-0 hover:before:opacity-10 before:transition-all before:ease-linear before:duration-100"
+											href={`/blog/${post.id}`}
+										>
+											{post.data.image && (
+												<img
+													class="group-hover:scale-105 transition ease-custom duration-500"
+													src={post.data.image}
+													alt={post.data.title}
+												/>
+											)}
+											{post.data.category && (
+												<div
+													class="absolute top-4 right-4 z-[1] bg-black/20 rounded-3xl px-5 py-2.5 font-outfit font-medium uppercase text-sm tracking-wider text-white"
+												>
+													{post.data.category}
+												</div>
+											)}
+										</a>
+									</div>
+									<div class="pt-6">
+										<!-- Post Info -->
+										<ul
+											class="text-white font-outfit font-medium uppercase text-sm tracking-wider"
+										>
+											{post.data.author && (
+												<li
+													class="list-none inline-block leading-none pr-[4px]"
+												>
+													<a
+														class="inline-block overflow-hidden"
+														href="#"
+													>
+														<span
+															class="block relative text-transparent before:content-[attr(data-text)] before:absolute before:top-0 before:left-0 before:opacity-100 before:text-white before:transition-all before:ease-out before:duration-200 hover:before:-top-full hover:before:opacity-0 after:content-[attr(data-text)] after:absolute after:top-full after:left-0 after:opacity-0 after:text-white after:transition-all after:ease-out after:duration-200 hover:after:top-0 hover:after:opacity-100"
+															data-text={`by ${post.data.author}`}
+															>by {post.data.author}</span
+														>
+													</a>
+												</li>
+											)}
+											<li
+												class={`list-none inline-block leading-none ${post.data.author ? 'relative pl-[14px] pr-[4px] before:content-[\'\'] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-[5px] before:h-[5px] before:rounded-md before:bg-white/80' : 'pr-[4px]'}`}
+											>
+												<a
+													class="inline-block overflow-hidden"
+													href="#"
+												>
+													<span
+														class="block relative text-transparent before:content-[attr(data-text)] before:absolute before:top-0 before:left-0 before:opacity-100 before:text-white before:transition-all before:ease-out before:duration-200 hover:before:-top-full hover:before:opacity-0 after:content-[attr(data-text)] after:absolute after:top-full after:left-0 after:opacity-0 after:text-white after:transition-all after:ease-out after:duration-200 hover:after:top-0 hover:after:opacity-100"
+														data-text={post.data.publishDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+														>{post.data.publishDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span
+													>
+												</a>
+											</li>
+										</ul>
+										<!-- Caption -->
+										<div class="mt-2">
+											<h2
+												class="relative font-outfit font-medium text-3xl"
+											>
+												<a
+													class="text-white group-hover/blog-box:pl-[44px] transition-all ease-out duration-200"
+													href={`/blog/${post.id}`}
+												>
+													<span
+														class="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 opacity-0 group-hover/blog-box:opacity-100 group-hover/blog-box:-translate-x-0 transition duration-100"
+													>
+														<i
+															class="bi bi-arrow-right"
+														></i>
+													</span>
+													{post.data.title}
+												</a>
+											</h2>
+										</div>
+									</div>
+								</div><!-- end blog-box -->
+							</div>
+						))}
+					</div><!-- end swiper-wrapper -->
+					</div><!-- blog-slider -->
+				</div>
+			</div>
+		</div>
+		<!-- end Blog section -->
+
+	</div><!-- container -->
+
+	<!-- Portfolio, Awards, and Testimonials sections have been temporarily hidden -->
+	<!-- To re-enable them, uncomment the data loading at the top of the file and uncomment the sections below -->
+	<!--
+	Portfolio section, Awards section, and Testimonials section commented out
+	Search for "Portfolio section", "Awards section", and "Testimonials section" in git history to restore
+	-->
+
+	<!-- Contact section -->
+	<div
+		id="contact"
+		class="container max-w-[1320px] mx-auto px-5 md:px-10 xl:px-5 pt-24 xl:pt-28"
+	>
+		<div class="w-full lg:flex space-y-6 lg:space-y-0">			<div class="w-full lg:w-1/3">
+				<h6
+					class="pl-[20px] relative font-outfit font-medium text-sm uppercase tracking-wider text-white/40 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-[12px] before:h-[12px] before:rounded-full before:border-2 before:border-white/30"
+				>
+					Contact
+				</h6>
+				<h2
+					class="font-outfit font-medium text-4xl md:text-5xl lg:text-6xl text-white mt-2"
+				>
+					{site.contactTitle || "Let's"} <span
+						class="bg-themeGradient bg-clip-text text-transparent"
+						>{site.contactTitle ? site.contactTitle.split(' ').slice(-1)[0] : "Talk"}</span>
+				</h2>
+				{site.contactDescription && (
+					<p class="leading-[1.75] text-white/70 mt-3">
+						{site.contactDescription}
+					</p>
+				)}
+			</div>
+			<div class="w-full lg:w-2/3">
+				<!-- Contact Info -->
+				<div class="flex">
+					<div class="w-1/2">
+						<h6
+							class="font-outfit font-medium uppercase text-sm tracking-wider text-white mb-2"
+						>
+							Email:
+						</h6>
+						<h3
+							class="font-outfit font-medium text-2xl lg:text-3xl text-white"
+						>
+							{site.email}
+						</h3>
+					</div>
+					<div class="w-1/2">
+						<h6
+							class="font-outfit font-medium uppercase text-sm tracking-wider text-white mb-2"
+						>
+							Call:
+						</h6>
+						<h3
+							class="font-outfit font-medium text-2xl lg:text-3xl text-white"
+						>
+							{site.phone}
+						</h3>
+					</div>
+				</div>
+				<!-- Contact Form -->
+				<div class="mt-8 lg:text-right">
+					<form class="space-y-4" method="post" id="contactform">
+						<div class="flex space-x-4">
+							<div class="w-1/2">
+								<input
+									class="w-full bg-darkBg px-5 py-4 rounded-lg placeholder:text-white/40 text-white/70 focus:outline-none"
+									type="text"
+									id="name"
+									name="name"
+									placeholder="Name"
+									required
+								/>
+							</div>
+							<div class="w-1/2">
+								<input
+									class="w-full bg-darkBg px-5 py-4 rounded-lg placeholder:text-white/40 text-white/70 focus:outline-none"
+									type="email"
+									id="email"
+									name="email"
+									placeholder="E-Mail"
+									required
+								/>
+							</div>
+						</div>
+						<input
+							class="w-full bg-darkBg px-5 py-4 rounded-lg placeholder:text-white/40 text-white/70 focus:outline-none"
+							type="text"
+							id="subject"
+							name="subject"
+							placeholder="Subject"
+							required
+						/>
+						<textarea
+							class="w-full bg-darkBg px-5 py-4 rounded-lg placeholder:text-white/40 text-white/70 h-[160px] focus:outline-none"
+							name="message"
+							id="message"
+							placeholder="Message"></textarea>
+						<button
+							class="inline-block relative group overflow-hidden bg-white/15 px-7 py-3 pr-11 rounded-3xl font-outfit font-medium uppercase text-sm tracking-wider text-white before:content-[''] before:absolute before:-z-[1] before:left-0 before:top-0 before:w-full before:h-full before:bg-themeGradient before:opacity-0 hover:before:opacity-20 before:transition-all before:ease-linear before:duration-100 after:content-[''] after:absolute after:top-1/2 after:right-[28px] after:-translate-y-1/2 after:bg-white after:w-[5px] after:h-[5px] after:rounded-full after:transition-all after:duration-[60ms] hover:after:opacity-40 hover:after:scale-[2.7]"
+							type="submit"
+						>
+							<span
+								class="block relative text-transparent before:content-[attr(data-text)] before:absolute before:top-0 before:left-0 before:opacity-100 before:text-white before:transition-all before:ease-out before:duration-200 group-hover:before:-top-full group-hover:before:opacity-0 after:content-[attr(data-text)] after:absolute after:top-full after:left-0 after:opacity-0 after:text-white after:transition-all after:ease-out after:duration-200 group-hover:after:top-0 group-hover:after:opacity-100"
+								data-text="Send Message">Send Message</span
+							>
+						</button>
+					</form>
+					<!-- Submit result -->
+					<div class="submit-result">
+						<span
+							class="transition duration-200 ease-out text-green-700"
+							id="success"
+							>Thank you! Your Message has been sent.</span
+						>
+						<span
+							class="transition duration-200 ease-out text-red-600"
+							id="error"
+							>Something went wrong, Please try again!</span
+						>
+					</div>
+				</div><!-- end contact-form -->
+			</div>
+		</div>
+	</div>
+	<!-- end Contact section -->
+</Layout>
