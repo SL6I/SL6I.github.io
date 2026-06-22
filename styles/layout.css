@@ -1,0 +1,157 @@
+/* ============================================
+   LAYOUT V2 — Containers, Grids, Responsive
+   ============================================ */
+
+.wrap {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 var(--s6);
+}
+
+.wrap-narrow {
+  max-width: 900px;
+}
+
+section {
+  position: relative;
+  padding: var(--s10) 0;
+}
+
+/* --- Section headers --- */
+.sec-header {
+  margin-bottom: var(--s8);
+}
+
+.sec-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gray-300);
+  margin-bottom: var(--s4);
+}
+
+.sec-label .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+}
+
+.sec-title {
+  font-size: var(--text-4xl);
+  letter-spacing: -0.04em;
+}
+
+/* --- Bento grid system --- */
+.bento {
+  display: grid;
+  gap: var(--s4);
+}
+
+.bento-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.bento-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.bento-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.bento-2-1 {
+  grid-template-columns: 2fr 1fr;
+}
+
+.bento-1-2 {
+  grid-template-columns: 1fr 2fr;
+}
+
+.span-2 { grid-column: span 2; }
+.span-3 { grid-column: span 3; }
+.span-full { grid-column: 1 / -1; }
+.row-2 { grid-row: span 2; }
+
+/* --- Horizontal scroll container --- */
+.h-scroll {
+  display: flex;
+  gap: var(--s5);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: var(--s4);
+  scrollbar-width: none;
+}
+
+.h-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.h-scroll-item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  :root {
+    --text-hero: clamp(2.5rem, 8vw, 6rem);
+    --text-4xl: 2.2rem;
+  }
+
+  .bento-3, .bento-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bento-2-1, .bento-1-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .span-2 { grid-column: span 1; }
+  .span-3 { grid-column: span 1; }
+
+  section {
+    padding: var(--s9) 0;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --text-hero: clamp(2rem, 12vw, 4rem);
+    --text-4xl: 1.8rem;
+    --text-3xl: 1.5rem;
+  }
+
+  .wrap {
+    padding: 0 var(--s4);
+  }
+
+  section {
+    padding: var(--s8) 0;
+  }
+
+  .bento-2, .bento-3, .bento-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .span-2, .span-3 {
+    grid-column: span 1;
+  }
+
+  .sec-header {
+    margin-bottom: var(--s7);
+  }
+}
+
+@media (max-width: 480px) {
+  .wrap {
+    padding: 0 var(--s3);
+  }
+}

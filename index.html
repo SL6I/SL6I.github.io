@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+  <title>Sultan Alaqili — AI Developer</title>
+  <meta name="description" content="Sultan Alaqili — AI Developer specializing in deep learning, computer vision, NLP, and multi-agent systems.">
+  <meta name="author" content="Sultan Alaqili">
+  <meta property="og:title" content="Sultan Alaqili — AI Developer">
+  <meta property="og:description" content="Building intelligent systems that see, hear, and understand.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#050508">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+
+  <!-- ══════ PAGE INTRO ══════ -->
+  <div class="page-intro" id="page-intro">
+    <div class="intro-name">
+      <span>Sultan</span>&nbsp;<span class="glow-text">Alaqili</span>
+    </div>
+    <div class="intro-line"></div>
+  </div>
+
+  <!-- ══════ SCROLL PROGRESS BAR ══════ -->
+  <div class="scroll-progress" id="scroll-progress">
+    <div class="scroll-progress-bar" id="scroll-progress-bar"></div>
+  </div>
+
+  <!-- ══════ PAGE SPOTLIGHT ══════ -->
+  <div class="page-spotlight" id="page-spotlight"></div>
+
+  <!-- ══════ TOAST ══════ -->
+  <div class="toast" id="toast">✓ Copied</div>
+
+  <!-- ══════ SIDE DOT NAV ══════ -->
+  <nav class="side-nav" id="side-nav" aria-label="Section navigation">
+    <button class="side-dot active" data-section="#hero" aria-label="Hero"><span class="side-label">Home</span></button>
+    <button class="side-dot" data-section="#about" aria-label="About"><span class="side-label">About</span></button>
+    <button class="side-dot" data-section="#experience" aria-label="Experience"><span class="side-label">Experience</span></button>
+    <button class="side-dot" data-section="#projects" aria-label="Projects"><span class="side-label">Projects</span></button>
+    <button class="side-dot" data-section="#skills" aria-label="Skills"><span class="side-label">Skills</span></button>
+    <button class="side-dot" data-section="#contact" aria-label="Contact"><span class="side-label">Contact</span></button>
+  </nav>
+
+  <!-- ══════ BACK TO TOP ══════ -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg class="progress-ring" viewBox="0 0 48 48">
+      <circle class="ring-bg" cx="24" cy="24" r="20"/>
+      <circle class="ring-fill" cx="24" cy="24" r="20"/>
+    </svg>
+    <span class="btt-icon">↑</span>
+  </button>
+
+
+  <!-- ══════════════ NAV ══════════════ -->
+  <nav class="nav" id="navbar">
+    <div class="wrap nav-inner">
+      <a href="#hero" class="nav-brand">sultan<em>.</em></a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="My Resume.pdf" target="_blank" class="nav-resume">CV ↗</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-mesh">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+      <div class="blob blob-4"></div>
+    </div>
+    <div class="hero-grid-overlay"></div>
+    <canvas class="hero-canvas" id="hero-canvas"></canvas>
+
+    <div class="wrap hero-content">
+      <div class="hero-status reveal">
+        <span class="pulse-dot"></span>
+        Open to opportunities
+      </div>
+
+      <h1 class="hero-name reveal rd1">
+        Sultan
+        <span class="line-2 glow-text">Alaqili</span>
+      </h1>
+
+      <p class="hero-role reveal rd2">
+        AI developer focused on
+        <span class="typed-wrap"><span id="typed">Deep Learning</span><span class="typed-cursor"></span></span>
+        — building systems that see, hear, and understand.
+      </p>
+
+      <div class="hero-btns reveal rd3">
+        <a href="#projects" class="btn btn-glow" id="cta-projects">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+          View Projects
+        </a>
+        <a href="My Resume.pdf" target="_blank" class="btn btn-ghost" id="cta-cv">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download CV
+        </a>
+      </div>
+
+      <div class="socials reveal rd4">
+        <a href="https://github.com/sultanAlaqworkers" target="_blank" class="soc soc-gh" aria-label="GitHub"><span class="tip">GitHub</span><svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+        <a href="https://huggingface.co/Sultannn" target="_blank" class="soc soc-hf" aria-label="Hugging Face"><span class="tip">Hugging Face</span><svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-.5 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3.5 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zM8 9.5c.828 0 1.5.895 1.5 2S8.828 13.5 8 13.5s-1.5-.895-1.5-2S7.172 9.5 8 9.5zm8 0c.828 0 1.5.895 1.5 2s-.672 2-1.5 2-1.5-.895-1.5-2 .672-2 1.5-2zm-8.5 6s1.5 3 4.5 3 4.5-3 4.5-3c-.5 1.5-2 3.5-4.5 3.5S7 17 7.5 15.5z"/></svg></a>
+        <a href="https://www.kaggle.com/sultanalaqili" target="_blank" class="soc soc-kg" aria-label="Kaggle"><span class="tip">Kaggle</span><svg viewBox="0 0 24 24"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.281.18.046.149.034.238-.036.27l-6.555 6.344 6.836 8.507c.095.118.116.211.075.282z"/></svg></a>
+        <a href="https://x.com/" target="_blank" class="soc soc-x" aria-label="X"><span class="tip">X / Twitter</span><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="https://www.linkedin.com/in/sultan-alaqili/" target="_blank" class="soc soc-li" aria-label="LinkedIn"><span class="tip">LinkedIn</span><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+      </div>
+
+      <div class="hero-contact-line reveal rd5">
+        <a href="#" class="copy-email">📧 sultanalothale22@gmail.com</a>
+        <span>📱 +966 530 372 185</span>
+        <span style="color:var(--gray-400);">📍 Saudi Arabia</span>
+        <span style="color:var(--cyan);" id="live-clock">--:--:--</span>
+      </div>
+    </div>
+
+    <div class="scroll-cue">
+      <span>scroll</span>
+      <div class="cue-line"></div>
+    </div>
+  </section>
+
+
+  <!-- ══════ MARQUEE ══════ -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <div class="marquee-item"><span class="m-dot"></span>PyTorch</div>
+      <div class="marquee-item"><span class="m-dot"></span>Computer Vision</div>
+      <div class="marquee-item"><span class="m-dot"></span>Transformers</div>
+      <div class="marquee-item"><span class="m-dot"></span>NLP</div>
+      <div class="marquee-item"><span class="m-dot"></span>Multi-Agent Systems</div>
+      <div class="marquee-item"><span class="m-dot"></span>YOLOv8</div>
+      <div class="marquee-item"><span class="m-dot"></span>Speech AI</div>
+      <div class="marquee-item"><span class="m-dot"></span>Deep Learning</div>
+      <div class="marquee-item"><span class="m-dot"></span>Transfer Learning</div>
+      <div class="marquee-item"><span class="m-dot"></span>BERT</div>
+      <div class="marquee-item"><span class="m-dot"></span>OCR</div>
+      <div class="marquee-item"><span class="m-dot"></span>LLM Agents</div>
+      <div class="marquee-item"><span class="m-dot"></span>PyTorch</div>
+      <div class="marquee-item"><span class="m-dot"></span>Computer Vision</div>
+      <div class="marquee-item"><span class="m-dot"></span>Transformers</div>
+      <div class="marquee-item"><span class="m-dot"></span>NLP</div>
+      <div class="marquee-item"><span class="m-dot"></span>Multi-Agent Systems</div>
+      <div class="marquee-item"><span class="m-dot"></span>YOLOv8</div>
+      <div class="marquee-item"><span class="m-dot"></span>Speech AI</div>
+      <div class="marquee-item"><span class="m-dot"></span>Deep Learning</div>
+      <div class="marquee-item"><span class="m-dot"></span>Transfer Learning</div>
+      <div class="marquee-item"><span class="m-dot"></span>BERT</div>
+      <div class="marquee-item"><span class="m-dot"></span>OCR</div>
+      <div class="marquee-item"><span class="m-dot"></span>LLM Agents</div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════ ABOUT ══════════════ -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="sec-header reveal">
+        <p class="sec-label"><span class="dot"></span> About</p>
+        <h2 class="sec-title">Building at the <span class="glow-text">intersection</span></h2>
+      </div>
+
+      <div class="bento bento-2" style="gap:var(--s5);">
+        <div class="b-card reveal rd1" style="grid-row:span 2;">
+          <div class="inner-glow"></div>
+          <p class="about-intro" style="margin-bottom:var(--s6);">
+            I build <strong>intelligent systems</strong> that push the boundaries of what AI can achieve — from
+            real-time lip reading to multi-agent evaluation frameworks. My work spans <strong>deep learning</strong>,
+            <strong>computer vision</strong>, <strong>NLP</strong>, and <strong>speech processing</strong>.
+          </p>
+          <div class="about-highlight" style="margin-bottom:var(--s4);">
+            <span class="h-icon">🏛️</span>
+            <p><strong>Accepted for the University of Oxford Summer 2026 program</strong> via KAUST Academy — recognized for academic excellence and research potential.</p>
+          </div>
+          <div class="about-highlight">
+            <span class="h-icon">🎯</span>
+            <p><strong>Trained 45+ participants</strong> over 3 days in advanced machine learning techniques — from model architectures to production deployment strategies.</p>
+          </div>
+        </div>
+
+        <div class="b-card reveal rd2" style="text-align:center;">
+          <div class="inner-glow"></div>
+          <div style="font-size:42px;margin-bottom:var(--s3);">🧠</div>
+          <h3 style="font-size:var(--text-3xl);margin-bottom:var(--s1);">
+            <span class="glow-text" data-count="6" data-suffix="+">0</span>
+          </h3>
+          <p style="color:var(--gray-300);font-size:var(--text-sm);">AI Research Projects</p>
+        </div>
+
+        <div class="b-card reveal rd3" style="text-align:center;">
+          <div class="inner-glow"></div>
+          <div style="font-size:42px;margin-bottom:var(--s3);">🎓</div>
+          <h3 style="font-size:var(--text-3xl);margin-bottom:var(--s1);">
+            <span class="glow-text" data-count="80" data-suffix="h">0</span>
+          </h3>
+          <p style="color:var(--gray-300);font-size:var(--text-sm);">KAUST Intensive Training</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════ EXPERIENCE ══════════════ -->
+  <section class="experience" id="experience">
+    <div class="wrap">
+      <div class="sec-header reveal">
+        <p class="sec-label"><span class="dot"></span> Experience</p>
+        <h2 class="sec-title">Where I've <span class="glow-text">built</span></h2>
+      </div>
+
+      <div class="exp-stack">
+        <div class="b-card reveal">
+          <div class="inner-glow"></div>
+          <div class="exp-card">
+            <div class="exp-icon">🏫</div>
+            <div class="exp-body">
+              <h3 class="scramble-hover">AI Training Graduate</h3>
+              <p class="exp-org">KAUST Academy</p>
+              <ul class="exp-list">
+                <li>Completed an intensive <strong style="color:var(--white);">80-hour AI training</strong> covering Deep Learning, Computer Vision, Transfer Learning, and Object Detection.</li>
+                <li>Hands-on experience building and optimizing state-of-the-art architectures on real-world datasets.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="b-card reveal rd1">
+          <div class="inner-glow"></div>
+          <div class="exp-card">
+            <div class="exp-icon">🌏</div>
+            <div class="exp-body">
+              <h3 class="scramble-hover">Exchange Student — SmartGrader</h3>
+              <p class="exp-org">The Education University of Hong Kong</p>
+              <ul class="exp-list">
+                <li>Engineered <strong style="color:var(--white);">SmartGrader</strong> — a prototype using <strong style="color:var(--white);">YOLOv8 + OCR</strong> to turn scanned handwritten exams into graded results via LLM rubrics.</li>
+                <li>Integrated object detection, text extraction, and language model evaluation into a seamless automated pipeline.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="b-card reveal rd2">
+          <div class="inner-glow"></div>
+          <div class="exp-card">
+            <div class="exp-icon">🔬</div>
+            <div class="exp-body">
+              <h3 class="scramble-hover">AI Intern</h3>
+              <p class="exp-org">Deep Scan Technologies</p>
+              <ul class="exp-list">
+                <li>Built a <strong style="color:var(--white);">voice-driven hotel reservation agent</strong> using N8N + ElevenLabs for intent processing and booking orchestration.</li>
+                <li>Assembled a <strong style="color:var(--white);">large Arabic speech corpus</strong> to train the Nabrah dialect model for Saudi Arabic speech recognition.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════ MARQUEE 2 ══════ -->
+  <div class="marquee-wrap" style="border-top:none;">
+    <div class="marquee-track" style="animation-direction:reverse;">
+      <div class="marquee-item"><span class="m-dot" style="background:var(--purple);"></span>SaudiBERT</div>
+      <div class="marquee-item"><span class="m-dot" style="background:var(--magenta);"></span>AraT5</div>
+      <div class="marquee-item"><span class="m-dot" style="background:var(--lime);"></span>R(2+1)D CNN</div>
+      <div class="marquee-item"><span class="m-dot" style="background:var(--cyan);"></span>ElevenLabs</div>
+      <div class="marquee-item"><span class="m-dot" style="background:var(--purple);"></span>N8N Workflows</div>
+      <div class="marquee-item"><span class="m-dot" style="background:var(--magenta);"></span>Object Detection</div>
+      <div class="marquee-item"><span class="m-dot" style="background:var(--lime);"></span>Lip Reading</div>
+      <div class="marquee-item"><span class="m-dot" style="background:var(--cyan);"></span>Arabic NLP</div>
+      <div class="marquee-item"><span class="m-dot" style="background:var(--purple);"></span>Voice Agents</div>
+      <div class="marquee-item"><span class="m-dot" style="background:var(--magenta);"></span>Scikit-Learn</div>
+      <div class="marquee-item"><span class="m-dot" style="background:var(--purple);"></span>SaudiBERT</div>
+      <div class="marquee-item"><span class="m-dot" style="background:var(--magenta);"></span>AraT5</div>
+      <div class="marquee-item"><span class="m-dot" style="background:var(--lime);"></span>R(2+1)D CNN</div>
+      <div class="marquee-item"><span class="m-dot" style="background:var(--cyan);"></span>ElevenLabs</div>
+      <div class="marquee-item"><span class="m-dot" style="background:var(--purple);"></span>N8N Workflows</div>
+      <div class="marquee-item"><span class="m-dot" style="background:var(--magenta);"></span>Object Detection</div>
+      <div class="marquee-item"><span class="m-dot" style="background:var(--lime);"></span>Lip Reading</div>
+      <div class="marquee-item"><span class="m-dot" style="background:var(--cyan);"></span>Arabic NLP</div>
+      <div class="marquee-item"><span class="m-dot" style="background:var(--purple);"></span>Voice Agents</div>
+      <div class="marquee-item"><span class="m-dot" style="background:var(--magenta);"></span>Scikit-Learn</div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════ PROJECTS ══════════════ -->
+  <section class="projects" id="projects">
+    <div class="wrap">
+      <div class="sec-header reveal">
+        <p class="sec-label"><span class="dot"></span> Projects</p>
+        <h2 class="sec-title">Things I've <span class="glow-text">shipped</span></h2>
+        <p style="color:var(--gray-400);margin-top:var(--s3);font-size:var(--text-sm);font-family:var(--font-mono);">← drag to explore →</p>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="proj-scroll" id="proj-scroll">
+        <div class="proj-card">
+          <div class="b-card proj-inner">
+            <div class="inner-glow"></div>
+            <span class="proj-num">// 01</span>
+            <h3 class="proj-title">Reject Me First</h3>
+            <span class="metric" style="margin-bottom:var(--s4);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg> Multi-Agent System</span>
+            <p class="proj-desc">A multi-agent evaluation committee that stress-tests startup ideas from every angle — market viability, technical feasibility, financial projections — using specialized AI agents that challenge and critique.</p>
+            <div class="proj-tags"><span class="tag tag-cyan">LLM Agents</span><span class="tag tag-purple">Multi-Agent</span><span class="tag tag-lime">Evaluation</span></div>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="b-card proj-inner">
+            <div class="inner-glow"></div>
+            <span class="proj-num">// 02</span>
+            <h3 class="proj-title">Saudi Dialect EOU Detection</h3>
+            <span class="metric" style="margin-bottom:var(--s4);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> 77.47% F1 Score</span>
+            <p class="proj-desc">End-of-utterance detection from text in Saudi dialect for voice agents. Fine-tuned SaudiBERT to predict when a speaker finishes their turn — enabling natural conversational AI in Arabic.</p>
+            <div class="proj-tags"><span class="tag tag-cyan">SaudiBERT</span><span class="tag tag-purple">NLP</span><span class="tag tag-magenta">Voice AI</span></div>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="b-card proj-inner">
+            <div class="inner-glow"></div>
+            <span class="proj-num">// 03</span>
+            <h3 class="proj-title">SHARES — Arabic Lip Reading</h3>
+            <span class="metric" style="margin-bottom:var(--s4);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> 76% Accuracy</span>
+            <p class="proj-desc">Real-time Arabic lip-reading system using R(2+1)D CNN to recognize emergency words from silent mouth movements. Built for safety-critical scenarios where audio is unavailable.</p>
+            <div class="proj-tags"><span class="tag tag-cyan">R(2+1)D CNN</span><span class="tag tag-purple">CV</span><span class="tag tag-lime">Real-time</span></div>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="b-card proj-inner">
+            <div class="inner-glow"></div>
+            <span class="proj-num">// 04</span>
+            <h3 class="proj-title">Arabic Text Correction</h3>
+            <span class="metric" style="margin-bottom:var(--s4);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> 81.04 F0.5 Score</span>
+            <p class="proj-desc">Fine-tuned AraT5 on the QALB-2014 dataset for grammatical error correction in Arabic. Leveraged POS tagging to deeply understand Arabic morphology and syntax for accurate corrections.</p>
+            <div class="proj-tags"><span class="tag tag-cyan">AraT5</span><span class="tag tag-purple">NLP</span><span class="tag tag-magenta">QALB-2014</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-arrows reveal">
+        <button class="proj-arrow" id="proj-left" aria-label="Scroll left">←</button>
+        <button class="proj-arrow" id="proj-right" aria-label="Scroll right">→</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════ SKILLS ══════════════ -->
+  <section class="skills" id="skills">
+    <div class="wrap">
+      <div class="sec-header reveal">
+        <p class="sec-label"><span class="dot"></span> Skills</p>
+        <h2 class="sec-title">My <span class="glow-text">toolkit</span></h2>
+      </div>
+
+      <div class="bento bento-2" style="gap:var(--s4);">
+        <div class="b-card skill-cell reveal"><div class="inner-glow"></div><div class="skill-icon">⚡</div><h3 class="skill-name">Frameworks & Libraries</h3><div class="skill-tags"><span class="tag tag-cyan">PyTorch</span><span class="tag tag-cyan">Scikit-Learn</span><span class="tag tag-cyan">NumPy</span><span class="tag tag-cyan">Pandas</span><span class="tag tag-cyan">OpenCV</span><span class="tag tag-cyan">Hugging Face</span><span class="tag tag-cyan">Transformers</span></div></div>
+        <div class="b-card skill-cell reveal rd1"><div class="inner-glow"></div><div class="skill-icon">🛠️</div><h3 class="skill-name">Tools & Infra</h3><div class="skill-tags"><span class="tag tag-purple">N8N</span><span class="tag tag-purple">LLM Prompting</span><span class="tag tag-purple">Experiment Tracking</span><span class="tag tag-purple">Git / GitHub</span><span class="tag tag-purple">ElevenLabs</span></div></div>
+        <div class="b-card skill-cell reveal rd2"><div class="inner-glow"></div><div class="skill-icon">🧠</div><h3 class="skill-name">AI Domains</h3><div class="skill-tags"><span class="tag tag-lime">Deep Learning</span><span class="tag tag-lime">Computer Vision</span><span class="tag tag-lime">NLP</span><span class="tag tag-lime">Speech & Audio</span><span class="tag tag-lime">Multi-Agent Systems</span><span class="tag tag-lime">Transfer Learning</span></div></div>
+        <div class="b-card skill-cell reveal rd3"><div class="inner-glow"></div><div class="skill-icon">💻</div><h3 class="skill-name">Languages & Platforms</h3><div class="skill-tags"><span class="tag tag-magenta">Python</span><span class="tag tag-magenta">Jupyter</span><span class="tag tag-magenta">Google Colab</span><span class="tag tag-magenta">Kaggle</span><span class="tag tag-magenta">Linux</span></div></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer class="footer" id="contact">
+    <div class="wrap">
+      <div class="footer-top reveal">
+        <h2 class="footer-headline">Let's build something <span class="glow-text">extraordinary</span></h2>
+        <p class="footer-sub">Always open to discussing new projects, research collaborations, or opportunities in AI.</p>
+      </div>
+
+      <div class="footer-links reveal rd1">
+        <div class="footer-link-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><a href="#" class="copy-email">sultanalothale22@gmail.com</a></div>
+        <div class="footer-link-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><span>+966 530 372 185</span></div>
+      </div>
+
+      <div style="display:flex;justify-content:center;margin-bottom:var(--s7);" class="reveal rd2">
+        <div class="socials">
+          <a href="https://github.com/sultanAlaqworkers" target="_blank" class="soc soc-gh" aria-label="GitHub"><span class="tip">GitHub</span><svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+          <a href="https://huggingface.co/Sultannn" target="_blank" class="soc soc-hf" aria-label="Hugging Face"><span class="tip">Hugging Face</span><svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-.5 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3.5 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zM8 9.5c.828 0 1.5.895 1.5 2S8.828 13.5 8 13.5s-1.5-.895-1.5-2S7.172 9.5 8 9.5zm8 0c.828 0 1.5.895 1.5 2s-.672 2-1.5 2-1.5-.895-1.5-2 .672-2 1.5-2zm-8.5 6s1.5 3 4.5 3 4.5-3 4.5-3c-.5 1.5-2 3.5-4.5 3.5S7 17 7.5 15.5z"/></svg></a>
+          <a href="https://www.kaggle.com/sultanalaqili" target="_blank" class="soc soc-kg" aria-label="Kaggle"><span class="tip">Kaggle</span><svg viewBox="0 0 24 24"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.281.18.046.149.034.238-.036.27l-6.555 6.344 6.836 8.507c.095.118.116.211.075.282z"/></svg></a>
+          <a href="https://x.com/" target="_blank" class="soc soc-x" aria-label="X"><span class="tip">X / Twitter</span><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.linkedin.com/in/sultan-alaqili/" target="_blank" class="soc soc-li" aria-label="LinkedIn"><span class="tip">LinkedIn</span><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-bottom reveal rd3">
+        <span>© 2026 Sultan Alaqili</span>
+        <span>Press <kbd style="padding:2px 6px;background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:4px;font-family:var(--font-mono);font-size:10px;">1-5</kbd> to navigate · <kbd style="padding:2px 6px;background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:4px;font-family:var(--font-mono);font-size:10px;">T</kbd> to top</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>
