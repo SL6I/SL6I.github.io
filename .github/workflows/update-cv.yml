@@ -13,9 +13,11 @@ jobs:
       contents: write
 
     steps:
-      # 1. Checkout the website repo
+      # 1. Checkout the website repo (fetch full history to avoid push conflicts)
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       # 2. Compile LaTeX to PDF
       - name: Compile LaTeX document
@@ -40,6 +42,8 @@ jobs:
             echo "✅ No changes detected in CV — skipping commit."
           else
             git commit -m "📄 Auto-build CV from cv.tex ($(date -u '+%Y-%m-%d'))"
+            # Pull any new changes first, then push (avoids rejected push)
+            git pull --rebase origin main
             git push
             echo "✅ CV updated and pushed successfully!"
           fi
