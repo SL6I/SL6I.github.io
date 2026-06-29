@@ -1,0 +1,68 @@
+name: Update CV from Overleaf
+
+on:
+  schedule:
+    # Runs daily at 00:00 UTC (03:00 AM Saudi Arabia time)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-cv:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      # 1. Checkout the website repo
+      - name: Checkout website repo
+        uses: actions/checkout@v4
+
+      # 2. Clone Overleaf project via Git
+      - name: Clone Overleaf project
+        env:
+          OVERLEAF_EMAIL: ${{ secrets.OVERLEAF_EMAIL }}
+          OVERLEAF_PASSWORD: ${{ secrets.OVERLEAF_PASSWORD }}
+        run: |
+          # Configure git credentials for Overleaf
+          git config --global credential.helper store
+          echo "https://${OVERLEAF_EMAIL}:${OVERLEAF_PASSWORD}@git.overleaf.com" > ~/.git-credentials
+
+          # Clone the Overleaf project
+          git clone https://git.overleaf.com/67f524a5d5d013266634f87b overleaf-cv
+
+          # Clean up credentials
+          rm ~/.git-credentials
+
+      # 3. Compile LaTeX to PDF
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: overleaf-cv
+
+      # 4. Copy PDF to website repo
+      - name: Copy compiled PDF
+        run: |
+          cp overleaf-cv/main.pdf "My Resume.pdf"
+
+      # 5. Check for changes and commit
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add "My Resume.pdf"
+
+          # Only commit if there are actual changes
+          if git diff --cached --quiet; then
+            echo "✅ No changes detected in CV — skipping commit."
+          else
+            git commit -m "📄 Auto-update CV from Overleaf ($(date -u '+%Y-%m-%d'))"
+            git push
+            echo "✅ CV updated and pushed successfully!"
+          fi
+
+      # 6. Cleanup
+      - name: Cleanup Overleaf clone
+        if: always()
+        run: rm -rf overleaf-cv
