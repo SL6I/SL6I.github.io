@@ -17,29 +17,13 @@ jobs:
       - name: Checkout website repo
         uses: actions/checkout@v4
 
-      # 2. Clone Overleaf project via Git
+      # 2. Clone Overleaf project via Git (using token auth)
       - name: Clone Overleaf project
         env:
-          OVERLEAF_EMAIL: ${{ secrets.OVERLEAF_EMAIL }}
-          OVERLEAF_PASSWORD: ${{ secrets.OVERLEAF_PASSWORD }}
+          OVERLEAF_TOKEN: ${{ secrets.OVERLEAF_TOKEN }}
         run: |
-          # Use GIT_ASKPASS to handle authentication safely (avoids URL encoding issues with @ in email)
-          export GIT_ASKPASS=$(mktemp)
-          chmod +x "$GIT_ASKPASS"
-
-          cat > "$GIT_ASKPASS" << 'SCRIPT'
-          #!/bin/bash
-          case "$1" in
-            *Username*|*username*) echo "$OVERLEAF_EMAIL" ;;
-            *Password*|*password*) echo "$OVERLEAF_PASSWORD" ;;
-          esac
-          SCRIPT
-
-          # Clone the Overleaf project
-          git clone https://git.overleaf.com/67f524a5d5d013266634f87b overleaf-cv
-
-          # Clean up
-          rm -f "$GIT_ASKPASS"
+          # Overleaf Git uses token auth: username=git, password=<token>
+          git clone https://git:${OVERLEAF_TOKEN}@git.overleaf.com/67f524a5d5d013266634f87b overleaf-cv
 
       # 3. Compile LaTeX to PDF
       - name: Compile LaTeX document
