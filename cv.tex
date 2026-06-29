@@ -1,0 +1,244 @@
+%-------------------------
+% Resume in Latex
+% Author : Harshibar
+% Based off of: https://github.com/jakeryang/resume
+% License : MIT
+% Modified for Sultan Alaqili
+%------------------------
+
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+% only for pdflatex
+% \input{glyphtounicode}
+
+% fontawesome
+\usepackage{fontawesome5}
+
+% fixed width
+\usepackage[scale=0.90,lf]{FiraMono}
+
+% light-grey
+\definecolor{light-grey}{gray}{0.83}
+\definecolor{dark-grey}{gray}{0.3}
+\definecolor{text-grey}{gray}{.08}
+
+\DeclareRobustCommand{\ebseries}{\fontseries{eb}\selectfont}
+\DeclareTextFontCommand{\texteb}{\ebseries}
+
+% custom underline
+\usepackage{contour}
+\usepackage[normalem]{ulem}
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+\newcommand{\myuline}[1]{%
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}
+
+% custom font: helvetica-style
+\usepackage{tgheros}
+\renewcommand*\familydefault{\sfdefault} 
+%% Only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins - tighter on all sides
+\addtolength{\oddsidemargin}{-0.7in}
+\addtolength{\evensidemargin}{-0.7in}
+\addtolength{\textwidth}{1.4in}
+\addtolength{\topmargin}{-0.95in}
+\addtolength{\textheight}{1.8in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting - sans serif sections
+\titleformat {\section}{
+    \bfseries \vspace{-5pt} \raggedright \large % Reduced spacing above section titles
+}{}{0em}{}[\color{light-grey} {\titlerule[2pt]} \vspace{-5pt}] % Reduced spacing below rules
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & {\color{dark-grey}\small #2}\vspace{1pt}\\ % top row of resume entry
+      \textit{#3} & {\color{dark-grey} \small #4}\\ % second row of resume entry
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \vspace{-2pt}\item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      #1 & {\color{dark-grey}\small #2} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+% Added negative vspace to tighten list ends
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\color{text-grey}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge Sultan Alaqili} \\ \vspace{4pt}
+    \small \faPhone* \hspace{2pt} +966 530 372 185 \hspace{1pt} $|$
+    \hspace{1pt} \faEnvelope \hspace{2pt} sultanalothale22@gmail.com \hspace{1pt} $|$ 
+    \hspace{1pt} \faMapMarker* \hspace{2pt} Saudi Arabia
+    \\ \vspace{2pt}
+    \small \faGlobe \hspace{2pt} \href{https://sl6i.github.io/}{Website} \hspace{1pt} $|$
+    \hspace{1pt} \faLinkedin \hspace{2pt} \href{https://linkedin.com/in/sultan-alaqili}{LinkedIn} \hspace{1pt} $|$ 
+    \hspace{1pt} \faGithub \hspace{2pt} \href{https://github.com/SL6I}{GitHub} \hspace{1pt} $|$
+    \hspace{1pt} \href{https://huggingface.co/SuperSl6}{Hugging Face} \hspace{1pt} $|$
+    \hspace{1pt} \faKaggle \hspace{2pt} \href{https://kaggle.com/sultanalaqili}{Kaggle} \hspace{1pt} $|$
+    \hspace{1pt} \faTwitter \hspace{2pt} \href{https://twitter.com/SuperSl6}{X}
+    \\ \vspace{-3pt}
+\end{center}
+
+%-----------PROFILE-----------
+\section{PROFILE}
+ \begin{itemize}[leftmargin=0in, label={}]
+    \small{\item{
+    AI/ML Engineer specializing in computer vision, NLP, and AI agents. Build end-to-end, production-ready systems, from multi-model AI pipelines to voice-driven agents and RAG assistants, turning the mathematical foundations of machine learning into reliable applications. Led a 3-day advanced ML training for 45+ participants.
+    }}
+ \end{itemize}
+
+%-----------EDUCATION-----------
+\section{EDUCATION}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Umm Al-Qura University}{Sep. 2021 -- Jun. 2026}
+      {Bachelor of Artificial Intelligence}{Makkah, Saudi Arabia}
+      \resumeItemListStart
+        \resumeItem{\textbf{GPA}: 3.97 / 4.00}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{EXPERIENCE}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {KAUST Academy}{Jan. 2026 -- Ongoing}
+{Artificial Intelligence Training Program $|$ {\color{dark-grey}\scriptsize \textit{Note: Accepted for University of Oxford Summer 2026}}}{\color{dark-grey}\small{Makkah, Saudi Arabia - Oxford, United Kingdom}}      \resumeItemListStart
+        \resumeItem{Completed an \textbf{80-hour} intensive in Deep Learning and Computer Vision: CNNs, transfer learning, image segmentation, object detection, and data augmentation through hands-on labs.}
+        \resumeItem{\textbf{Stack}: PyTorch, OpenCV, CNNs, Transfer Learning, Image Processing \hspace{1pt} $|$ \href{https://drive.google.com/drive/folders/1YyTIVGOKtknZQJ8GVNpcsuhp9iCBbbe0?usp=sharing}{\myuline{Certificates}}}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {The Education University of Hong Kong}{Jul. 2025 -- Aug. 2025}
+      {Exchange Student (Summer Program)}{Hong Kong, China}
+      \resumeItemListStart
+      \resumeItem{\textbf{Intensive DL/CV / Object Detection}: End-to-end detection workflows via labs covering CNNs, transfer learning, data annotation, YOLO training/inference, and evaluation (mAP, CER).}
+        \resumeItem{\textbf{SmartGrader}: Built a system that grades scanned handwritten exams end-to-end: YOLOv8 to locate sections, EasyOCR + TrOCR to read handwriting, and an LLM to score by rubric, with a review/edit/export page.}
+        \resumeItem{\textbf{Stack}: PyTorch, YOLOv8, OCR, LLM prompting, experiment tracking \hspace{1pt} $|$ \href{https://drive.google.com/file/d/1sj-yJGdCS-h-AqCUITJCkLHrFh82o0uU/view?usp=sharing}{\myuline{Certificate}}}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Deep Scan Technologies $|$ \href{https://www.dscan.ai/}{\myuline{Company}}}{Mar. 2025 -- Jun. 2025}
+      {AI Intern}{Riyadh, Saudi Arabia}
+      \resumeItemListStart
+        \resumeItem{\textbf{Hotel Voice Assistant (AI Agent)}: Built a voice-driven reservation system with n8n + ElevenLabs that books, cancels, and reschedules stays, orchestrating intent and updating booking data in real time.}
+        \resumeItem{\textbf{Speech Data}: Assembled and cleaned a large Arabic speech corpus from public sources to train Nabrah (Saudi dialect voice model).}
+        \resumeItem{\textbf{Stack}: PyTorch, n8n, ElevenLabs, Whisper, GPT, Pandas, Git/GitHub, Kaggle}
+      \resumeItemListEnd
+ 
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+ 
+\section{PROJECTS}
+    \resumeSubHeadingListStart
+
+      % ---- GRADUATION PROJECT ----
+      \resumeProjectHeading
+          {\textbf{NeoBalady+: Multi-Model AI for Smart-City Operations} $|$ {\footnotesize\emph{PyTorch, ConvLSTM, VLM, Whisper, RAG, OSMnx}}}{Sep. 2025 -- Jun. 2026}
+          \resumeItemListStart
+            \resumeItem{Built a multi-model AI backend (graduation project) for Makkah Municipality's Balady app: a quantized Vision-Language Model classifies photo complaints, writes Arabic descriptions, flags day/night duplicates, sets objective priority over exaggerated reports, and verifies repairs from before/after images; a Saudi-dialect Whisper transcribes voice notes.}
+            \resumeItem{Added a ConvLSTM forecaster on Makkah's real street network to flag infrastructure hotspots before they're reported (with Z-Score anomaly alerts), a Random Forest for dynamic SLA estimation, and a RAG Arabic citizen assistant; ran the full pipeline on a single GPU with interactive Gradio dashboards.}
+          \resumeItemListEnd
+
+      % ---- EOU PROJECT ----
+      \resumeProjectHeading
+          {\textbf{Saudi Dialect End-of-Utterance (EOU) Detection} $|$ \emph{BERT, NLP, SaudiBERT} $|$ \href{https://huggingface.co/SuperSl6/saudi-eou-model-final}{\myuline{Model}}}{Jan. 2026}
+          \resumeItemListStart
+            \resumeItem{Built a Saudi-dialect end-of-utterance detector for voice agents; fine-tuned \textbf{SaudiBERT} on a hybrid dataset (public data + 2{,}136 ALLaM-generated synthetic edge cases), reaching \textbf{77.47\%} F1 on the held-out test set.}
+            \resumeItem{\href{https://huggingface.co/spaces/SuperSl6/saudi-eou-model-final}{\myuline{Live Demo}} $|$ \href{https://huggingface.co/datasets/SuperSl6/saudi-eou-dataset-final}{\myuline{Dataset}}}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{IronID: On-Device Gym Equipment Recognition} $|$ \emph{TFLite, MobileNetV3, Knowledge Distillation} $|$ \href{https://github.com/Abdu11aHHD/IronID}{\myuline{GitHub}}}{Oct. 2025 -- Jan. 2026}
+          \resumeItemListStart
+            \resumeItem{Built a hybrid Android app that recognizes gym equipment fully on-device, removing cloud latency and privacy risk; benchmarked MobileNetV3-Small, EfficientNet-B0 distillation, and MobileNetV3-Large, selecting the latter for \textbf{97\%} baseline accuracy at mobile-friendly speed, gated by a 60\% confidence threshold.}
+            \resumeItem{Compressed the model via magnitude-based pruning (TF Model Optimization Toolkit) and Float16 quantization, cutting size from 11.37MB to \textbf{5.72MB} while reaching \textbf{99.02\%} accuracy at 30--35ms latency; paired with a GPT-3.5-turbo coach for personalized routines, shipped via GitHub Actions CI/CD.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Arabic Text Correction (NLP)} $|$ \emph{PyTorch, AraT5, POS Tagging} $|$ \href{https://github.com/SL6I/Arabic-Text-Correction}{\myuline{GitHub}}}{Feb. 2025 -- Mar. 2025}
+          \resumeItemListStart
+            \resumeItem{Fine-tuned AraT5 with POS tagging on QALB-2014 for Arabic grammatical error detection and correction, achieving \textbf{81.04} F0.5.}
+          \resumeItemListEnd
+          
+    \resumeSubHeadingListEnd
+
+
+%-----------SKILLS-----------
+\section{SKILLS}
+ \begin{itemize}[leftmargin=0in, label={}]
+    \small{\item{
+     \textbf{Technical Skills} {: Machine Learning, Deep Learning, Computer Vision, NLP, LLMs \& RAG, AI Agents}\vspace{2pt} \\
+     \textbf{Frameworks \& Libraries} {: PyTorch, FastAPI, Hugging Face Transformers, Scikit-Learn, OpenCV, NumPy, Pandas, Matplotlib}\vspace{2pt} \\
+     \textbf{Programming \& Tools} {: Python, Java, Git/GitHub, Gradio, n8n, Google Colab}\vspace{2pt} \\
+     \textbf{Soft Skills} {: Problem-Solving, Presentation, Teamwork, Leadership, Adaptability, Creativity}\vspace{2pt} \\
+     \textbf{Languages} {: Arabic (Native), English (Fluent)}
+    }}
+ \end{itemize}
+
+%-------------------------------------------
+\end{document}

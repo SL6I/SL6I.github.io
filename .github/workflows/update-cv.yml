@@ -1,43 +1,34 @@
-name: Update CV from Overleaf
+name: Build CV PDF
 
 on:
-  schedule:
-    # Runs daily at 00:00 UTC (03:00 AM Saudi Arabia time)
-    - cron: '0 0 * * *'
+  push:
+    paths:
+      - 'cv.tex'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
-  update-cv:
+  build-cv:
     runs-on: ubuntu-latest
     permissions:
       contents: write
 
     steps:
       # 1. Checkout the website repo
-      - name: Checkout website repo
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      # 2. Clone Overleaf project via Git (using token auth)
-      - name: Clone Overleaf project
-        env:
-          OVERLEAF_TOKEN: ${{ secrets.OVERLEAF_TOKEN }}
-        run: |
-          # Overleaf Git uses token auth: username=git, password=<token>
-          git clone https://git:${OVERLEAF_TOKEN}@git.overleaf.com/67f524a5d5d013266634f87b overleaf-cv
-
-      # 3. Compile LaTeX to PDF
+      # 2. Compile LaTeX to PDF
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: main.tex
-          working_directory: overleaf-cv
+          root_file: cv.tex
 
-      # 4. Copy PDF to website repo
-      - name: Copy compiled PDF
+      # 3. Rename and move the compiled PDF
+      - name: Rename compiled PDF
         run: |
-          cp overleaf-cv/main.pdf "My Resume.pdf"
+          cp cv.pdf "My Resume.pdf"
 
-      # 5. Check for changes and commit
+      # 4. Check for changes and commit
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
@@ -45,16 +36,10 @@ jobs:
 
           git add "My Resume.pdf"
 
-          # Only commit if there are actual changes
           if git diff --cached --quiet; then
             echo "✅ No changes detected in CV — skipping commit."
           else
-            git commit -m "📄 Auto-update CV from Overleaf ($(date -u '+%Y-%m-%d'))"
+            git commit -m "📄 Auto-build CV from cv.tex ($(date -u '+%Y-%m-%d'))"
             git push
             echo "✅ CV updated and pushed successfully!"
           fi
-
-      # 6. Cleanup
-      - name: Cleanup Overleaf clone
-        if: always()
-        run: rm -rf overleaf-cv
