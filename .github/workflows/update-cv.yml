@@ -23,15 +23,23 @@ jobs:
           OVERLEAF_EMAIL: ${{ secrets.OVERLEAF_EMAIL }}
           OVERLEAF_PASSWORD: ${{ secrets.OVERLEAF_PASSWORD }}
         run: |
-          # Configure git credentials for Overleaf
-          git config --global credential.helper store
-          echo "https://${OVERLEAF_EMAIL}:${OVERLEAF_PASSWORD}@git.overleaf.com" > ~/.git-credentials
+          # Use GIT_ASKPASS to handle authentication safely (avoids URL encoding issues with @ in email)
+          export GIT_ASKPASS=$(mktemp)
+          chmod +x "$GIT_ASKPASS"
+
+          cat > "$GIT_ASKPASS" << 'SCRIPT'
+          #!/bin/bash
+          case "$1" in
+            *Username*|*username*) echo "$OVERLEAF_EMAIL" ;;
+            *Password*|*password*) echo "$OVERLEAF_PASSWORD" ;;
+          esac
+          SCRIPT
 
           # Clone the Overleaf project
           git clone https://git.overleaf.com/67f524a5d5d013266634f87b overleaf-cv
 
-          # Clean up credentials
-          rm ~/.git-credentials
+          # Clean up
+          rm -f "$GIT_ASKPASS"
 
       # 3. Compile LaTeX to PDF
       - name: Compile LaTeX document
