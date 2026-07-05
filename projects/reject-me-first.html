@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Reject Me First — Multi-Agent Startup Evaluation — Sultan Alaqili</title>
+  <meta name="description" content="A multi-agent evaluation committee that stress-tests startup ideas: market, technical, and financial agents attack independently, then a synthesis layer surfaces the sharpest critiques and strongest counter-arguments.">
+  <link rel="canonical" href="https://sl6i.github.io/projects/reject-me-first.html">
+  <meta name="theme-color" content="#F5F5F3">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Reject Me First — Multi-Agent Startup Evaluation — Sultan Alaqili">
+  <meta property="og:description" content="A multi-agent evaluation committee that stress-tests startup ideas: market, technical, and financial agents attack independently, then a synthesis layer surfaces the sharpest critiques and strongest counter-arguments.">
+  <meta property="og:url" content="https://sl6i.github.io/projects/reject-me-first.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@SuperSl6">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%2300E5FF'/><stop offset='100%25' stop-color='%23B44DFF'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='%23060609'/><text x='50' y='69' text-anchor='middle' font-family='Arial,sans-serif' font-weight='bold' font-size='62' fill='url(%23g)'>S</text></svg>">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme") || "light";
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (t === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+          if (m) m.setAttribute("content", "#F5F5F3");
+        } else {
+          document.documentElement.removeAttribute("data-theme");
+          if (m) m.setAttribute("content", "#060609");
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../styles/main.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Reject Me First — Multi-Agent Startup Evaluation",
+    "url": "https://sl6i.github.io/projects/reject-me-first.html",
+    "description": "A multi-agent evaluation committee that stress-tests startup ideas: market, technical, and financial agents attack independently, then a synthesis layer surfaces the sharpest critiques and strongest counter-arguments.",
+    "author": { "@type": "Person", "name": "Sultan Alaqili", "url": "https://sl6i.github.io/" }
+  }
+  </script>
+</head>
+<body>
+  <script>document.documentElement.classList.add("js");</script>
+
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+  <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html" aria-label="Sultan Alaqili — home">
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span class="brand-word">Sultan Alaqili</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="../index.html#about"><span class="nl-num">01</span>about</a>
+        <a href="../index.html#experience"><span class="nl-num">02</span>experience</a>
+        <a href="../index.html#projects"><span class="nl-num">03</span>projects</a>
+        <a href="../index.html#stack"><span class="nl-num">04</span>stack</a>
+        <a href="../index.html#contact"><span class="nl-num">05</span>contact</a>
+        <a class="nav-cv" href="../My Resume.pdf" target="_blank" rel="noopener">cv&nbsp;↗</a>
+        <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M21.5 12h-2.2M4.7 12H2.5M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6M18.7 18.7l-1.6-1.6M6.9 6.9 5.3 5.3"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.5A8.3 8.3 0 0 1 9.5 3.8a8.3 8.3 0 1 0 10.7 10.7Z"/></svg>
+        </button>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <nav aria-label="Mobile">
+      <a href="../index.html#about"><span>01</span>About</a>
+      <a href="../index.html#experience"><span>02</span>Experience</a>
+      <a href="../index.html#projects"><span>03</span>Projects</a>
+      <a href="../index.html#stack"><span>04</span>Stack</a>
+      <a href="../index.html#contact"><span>05</span>Contact</a>
+      <a href="../My Resume.pdf" target="_blank" rel="noopener"><span>↗</span>Download CV</a>
+      <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M21.5 12h-2.2M4.7 12H2.5M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6M18.7 18.7l-1.6-1.6M6.9 6.9 5.3 5.3"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.5A8.3 8.3 0 0 1 9.5 3.8a8.3 8.3 0 1 0 10.7 10.7Z"/></svg>
+        <span class="tt-label">light mode</span>
+      </button>
+    </nav>
+  </div>
+
+  <main id="main">
+    <section class="case-hero">
+      <div class="container">
+        <a class="crumb" href="../index.html#projects">← all projects</a>
+        <h1 class="case-title">Reject Me First <span class="feature-sub" style="display:block">An adversarial AI committee for startup ideas</span></h1>
+        <p class="case-one-liner">Most startup feedback is polite. This committee of adversarial AI agents finds the failure modes before the market does.</p>
+        <ul class="case-meta" aria-label="Project facts">
+          <li><span class="k">type</span>multi-agent system</li>
+          <li><span class="k">role</span>solo project</li>
+          <li><span class="k">headline</span>3 adversarial agents + synthesis</li>
+        </ul>
+        <div class="case-links">
+
+          <!-- TODO(SULTAN): add the GitHub link for Reject Me First -->
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label mono"><span class="label-dot" aria-hidden="true"></span>the problem</p>
+        </header>
+        <div class="case-prose reveal">
+          <p>Investors pass without saying why. Friends encourage without knowing the domain. And a single LLM asked to "critique my startup" optimizes for completeness, not depth — it covers every angle shallowly, which is exactly what investors don't do.</p>
+          <p>Useful pre-mortem feedback requires agents that are <strong>adversarial by design</strong> — each one committed to finding failure modes in its own domain.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label mono"><span class="label-dot" aria-hidden="true"></span>how it works</p>
+        </header>
+        <ol class="steps reveal">
+          <li>
+            <h3>Idea intake — no template</h3>
+            <p>Submit the concept in plain natural language. The system parses intent, target market, and core value proposition automatically.</p>
+          </li>
+          <li>
+            <h3>The market agent attacks</h3>
+            <p>Challenges addressable market size, competitive landscape, and timing: who else is doing this, why now, who actually pays?</p>
+          </li>
+          <li>
+            <h3>The technical agent attacks</h3>
+            <p>Probes build complexity, technical risk, and the gap between what's described and what's buildable — flagging over-engineering, under-scoping, and dependency risks.</p>
+          </li>
+          <li>
+            <h3>The financial agent attacks, then synthesis</h3>
+            <p>Stress-tests revenue assumptions, burn rate, and unit economics. A synthesis layer aggregates the sharpest critiques into a final verdict — with the strongest counter-arguments highlighted, so it's a sparring partner, not a firing squad.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label mono"><span class="label-dot" aria-hidden="true"></span>results</p>
+        </header>
+        <ul class="stats-grid reveal" aria-label="Key results">
+          <li class="stat-card"><p class="stat-value">3</p><p class="stat-label">adversarial domain agents</p></li>
+          <li class="stat-card"><p class="stat-value">1</p><p class="stat-label">synthesis verdict with counter-arguments</p></li>
+          <li class="stat-card"><p class="stat-value">0</p><p class="stat-label">templates — plain-language intake</p></li>
+          <li class="stat-card"><p class="stat-value">∞</p><p class="stat-label">cheaper than learning it from the market</p></li>
+        </ul>
+        <ul class="chips reveal" aria-label="Stack"><li>LangChain</li><li>GPT</li><li>Multi-Agent</li><li>Prompt Engineering</li><li>Python</li></ul>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <nav class="case-nav reveal" aria-label="More projects">
+          <a href="arabic-text-correction.html"><span class="dir">← previous</span>Arabic Text Correction</a>
+          <a class="case-next" href="shares-lip-reading.html"><span class="dir">next →</span>SHARES — Arabic Lip Reading</a>
+        </nav>
+        <div class="case-cta reveal">
+          <p><strong>Want the full story?</strong> I'm happy to walk through the architecture, the failures, and the trade-offs.</p>
+          <a class="btn btn-solid" href="mailto:sultanalothale22@gmail.com">Get in touch</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="mono footer-note">Designed &amp; built by hand — no template. © 2026 sultan alaqili</p>
+      <a class="mono footer-top" href="../index.html">back home ↑</a>
+    </div>
+  </footer>
+
+  <script src="../scripts/main.js" defer></script>
+</body>
+</html>

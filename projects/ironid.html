@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>IronID — On-Device Gym Equipment Recognition — Sultan Alaqili</title>
+  <meta name="description" content="Android app recognizing gym equipment fully on-device: MobileNetV3-Large pruned and Float16-quantized from 11.37 MB to 5.72 MB at 99.02% accuracy, 30–35 ms latency, with a GPT coach.">
+  <link rel="canonical" href="https://sl6i.github.io/projects/ironid.html">
+  <meta name="theme-color" content="#F5F5F3">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="IronID — On-Device Gym Equipment Recognition — Sultan Alaqili">
+  <meta property="og:description" content="Android app recognizing gym equipment fully on-device: MobileNetV3-Large pruned and Float16-quantized from 11.37 MB to 5.72 MB at 99.02% accuracy, 30–35 ms latency, with a GPT coach.">
+  <meta property="og:url" content="https://sl6i.github.io/projects/ironid.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@SuperSl6">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%2300E5FF'/><stop offset='100%25' stop-color='%23B44DFF'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='%23060609'/><text x='50' y='69' text-anchor='middle' font-family='Arial,sans-serif' font-weight='bold' font-size='62' fill='url(%23g)'>S</text></svg>">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme") || "light";
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (t === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+          if (m) m.setAttribute("content", "#F5F5F3");
+        } else {
+          document.documentElement.removeAttribute("data-theme");
+          if (m) m.setAttribute("content", "#060609");
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../styles/main.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "IronID — On-Device Gym Equipment Recognition",
+    "url": "https://sl6i.github.io/projects/ironid.html",
+    "description": "Android app recognizing gym equipment fully on-device: MobileNetV3-Large pruned and Float16-quantized from 11.37 MB to 5.72 MB at 99.02% accuracy, 30–35 ms latency, with a GPT coach.",
+    "author": { "@type": "Person", "name": "Sultan Alaqili", "url": "https://sl6i.github.io/" }
+  }
+  </script>
+</head>
+<body>
+  <script>document.documentElement.classList.add("js");</script>
+
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+  <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html" aria-label="Sultan Alaqili — home">
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span class="brand-word">Sultan Alaqili</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="../index.html#about"><span class="nl-num">01</span>about</a>
+        <a href="../index.html#experience"><span class="nl-num">02</span>experience</a>
+        <a href="../index.html#projects"><span class="nl-num">03</span>projects</a>
+        <a href="../index.html#stack"><span class="nl-num">04</span>stack</a>
+        <a href="../index.html#contact"><span class="nl-num">05</span>contact</a>
+        <a class="nav-cv" href="../My Resume.pdf" target="_blank" rel="noopener">cv&nbsp;↗</a>
+        <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M21.5 12h-2.2M4.7 12H2.5M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6M18.7 18.7l-1.6-1.6M6.9 6.9 5.3 5.3"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.5A8.3 8.3 0 0 1 9.5 3.8a8.3 8.3 0 1 0 10.7 10.7Z"/></svg>
+        </button>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <nav aria-label="Mobile">
+      <a href="../index.html#about"><span>01</span>About</a>
+      <a href="../index.html#experience"><span>02</span>Experience</a>
+      <a href="../index.html#projects"><span>03</span>Projects</a>
+      <a href="../index.html#stack"><span>04</span>Stack</a>
+      <a href="../index.html#contact"><span>05</span>Contact</a>
+      <a href="../My Resume.pdf" target="_blank" rel="noopener"><span>↗</span>Download CV</a>
+      <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M21.5 12h-2.2M4.7 12H2.5M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6M18.7 18.7l-1.6-1.6M6.9 6.9 5.3 5.3"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.5A8.3 8.3 0 0 1 9.5 3.8a8.3 8.3 0 1 0 10.7 10.7Z"/></svg>
+        <span class="tt-label">light mode</span>
+      </button>
+    </nav>
+  </div>
+
+  <main id="main">
+    <section class="case-hero">
+      <div class="container">
+        <a class="crumb" href="../index.html#projects">← all projects</a>
+        <h1 class="case-title">IronID <span class="feature-sub" style="display:block">On-device gym equipment recognition</span></h1>
+        <p class="case-one-liner">Point a phone at any gym machine and know what it is in ~33 ms — no cloud, no privacy leak, no internet at all. 99.02% accuracy from a 5.72 MB model.</p>
+        <ul class="case-meta" aria-label="Project facts">
+          <li><span class="k">period</span>oct 2025 — jan 2026</li>
+          <li><span class="k">role</span>team project</li>
+          <li><span class="k">headline</span>99.02% @ 5.72 MB · 30–35 ms</li>
+        </ul>
+        <div class="case-links">
+          <a class="btn btn-ghost" href="https://github.com/Abdu11aHHD/IronID" target="_blank" rel="noopener">github ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label mono"><span class="label-dot" aria-hidden="true"></span>the problem</p>
+        </header>
+        <div class="case-prose reveal">
+          <p>Cloud vision in a gym is the wrong answer twice: every frame adds round-trip latency, and camera frames from a private space get shipped to external servers. The model had to run entirely on the phone.</p>
+          <p>But gym equipment is visually confusing — steel, cables, benches everywhere. A small model mixes them up; a big model won't fit a phone. The whole project lives inside that squeeze.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label mono"><span class="label-dot" aria-hidden="true"></span>how it works</p>
+        </header>
+        <ol class="steps reveal">
+          <li>
+            <h3>Benchmark three mobile architectures</h3>
+            <p>On 10 equipment classes: MobileNetV3-Small (3.6 MB, 92%) — too weak. EfficientNet-B0 (15.5 MB, 99%) — too heavy. <strong>MobileNetV3-Large</strong> (11.5 MB, 97%) — the right starting point.</p>
+          </li>
+          <li>
+            <h3>Test knowledge distillation honestly</h3>
+            <p>EfficientNet-B0 as teacher for MobileNetV3-Small moved accuracy from 92% to just 93%. Structural capacity was the ceiling, not training — so distillation was dropped instead of forced.</p>
+          </li>
+          <li>
+            <h3>Prune, then quantize</h3>
+            <p>Magnitude-based pruning with polynomial sparsity decay (0% → 50% over 10 epochs), then TFLite conversion with Float16 quantization: <strong>11.37 MB → 5.72 MB while accuracy rose to 99.02%</strong> — the pruning re-training actually improved generalization.</p>
+          </li>
+          <li>
+            <h3>Ship it like a product</h3>
+            <p>Kotlin + CameraX for live input, TFLite interpreter for inference, and a <strong>60% confidence gate</strong> — below it, the app asks the user to reframe rather than guess wrong. A GPT-3.5-turbo coach builds routines; GitHub Actions runs CI/CD.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label mono"><span class="label-dot" aria-hidden="true"></span>results</p>
+        </header>
+        <ul class="stats-grid reveal" aria-label="Key results">
+          <li class="stat-card"><p class="stat-value">99.02%</p><p class="stat-label">final accuracy (10 classes)</p></li>
+          <li class="stat-card"><p class="stat-value">5.72<span class="mono">MB</span></p><p class="stat-label">from 11.37 MB — ~50% smaller</p></li>
+          <li class="stat-card"><p class="stat-value">30–35<span class="mono">ms</span></p><p class="stat-label">on-device inference latency</p></li>
+          <li class="stat-card"><p class="stat-value">60%</p><p class="stat-label">confidence gate — no wrong guesses</p></li>
+        </ul>
+        <ul class="chips reveal" aria-label="Stack"><li>TensorFlow</li><li>TFLite</li><li>MobileNetV3</li><li>Pruning</li><li>Float16</li><li>Kotlin</li><li>CameraX</li><li>GitHub Actions</li></ul>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <nav class="case-nav reveal" aria-label="More projects">
+          <a href="saudi-eou.html"><span class="dir">← previous</span>Saudi Dialect EOU Detection</a>
+          <a class="case-next" href="smartgrader.html"><span class="dir">next →</span>SmartGrader — Exam Grading</a>
+        </nav>
+        <div class="case-cta reveal">
+          <p><strong>Want the full story?</strong> I'm happy to walk through the architecture, the failures, and the trade-offs.</p>
+          <a class="btn btn-solid" href="mailto:sultanalothale22@gmail.com">Get in touch</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="mono footer-note">Designed &amp; built by hand — no template. © 2026 sultan alaqili</p>
+      <a class="mono footer-top" href="../index.html">back home ↑</a>
+    </div>
+  </footer>
+
+  <script src="../scripts/main.js" defer></script>
+</body>
+</html>

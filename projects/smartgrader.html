@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SmartGrader — Handwritten Exam Grading — Sultan Alaqili</title>
+  <meta name="description" content="Capstone at The Education University of Hong Kong: YOLOv8 locates answer sections, EasyOCR + TrOCR read the handwriting, and an LLM scores against the rubric — with a review/edit/export page for teachers.">
+  <link rel="canonical" href="https://sl6i.github.io/projects/smartgrader.html">
+  <meta name="theme-color" content="#F5F5F3">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="SmartGrader — Handwritten Exam Grading — Sultan Alaqili">
+  <meta property="og:description" content="Capstone at The Education University of Hong Kong: YOLOv8 locates answer sections, EasyOCR + TrOCR read the handwriting, and an LLM scores against the rubric — with a review/edit/export page for teachers.">
+  <meta property="og:url" content="https://sl6i.github.io/projects/smartgrader.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@SuperSl6">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%2300E5FF'/><stop offset='100%25' stop-color='%23B44DFF'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='%23060609'/><text x='50' y='69' text-anchor='middle' font-family='Arial,sans-serif' font-weight='bold' font-size='62' fill='url(%23g)'>S</text></svg>">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme") || "light";
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (t === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+          if (m) m.setAttribute("content", "#F5F5F3");
+        } else {
+          document.documentElement.removeAttribute("data-theme");
+          if (m) m.setAttribute("content", "#060609");
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../styles/main.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "SmartGrader — Handwritten Exam Grading",
+    "url": "https://sl6i.github.io/projects/smartgrader.html",
+    "description": "Capstone at The Education University of Hong Kong: YOLOv8 locates answer sections, EasyOCR + TrOCR read the handwriting, and an LLM scores against the rubric — with a review/edit/export page for teachers.",
+    "author": { "@type": "Person", "name": "Sultan Alaqili", "url": "https://sl6i.github.io/" }
+  }
+  </script>
+</head>
+<body>
+  <script>document.documentElement.classList.add("js");</script>
+
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+  <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html" aria-label="Sultan Alaqili — home">
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span class="brand-word">Sultan Alaqili</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="../index.html#about"><span class="nl-num">01</span>about</a>
+        <a href="../index.html#experience"><span class="nl-num">02</span>experience</a>
+        <a href="../index.html#projects"><span class="nl-num">03</span>projects</a>
+        <a href="../index.html#stack"><span class="nl-num">04</span>stack</a>
+        <a href="../index.html#contact"><span class="nl-num">05</span>contact</a>
+        <a class="nav-cv" href="../My Resume.pdf" target="_blank" rel="noopener">cv&nbsp;↗</a>
+        <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M21.5 12h-2.2M4.7 12H2.5M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6M18.7 18.7l-1.6-1.6M6.9 6.9 5.3 5.3"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.5A8.3 8.3 0 0 1 9.5 3.8a8.3 8.3 0 1 0 10.7 10.7Z"/></svg>
+        </button>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <nav aria-label="Mobile">
+      <a href="../index.html#about"><span>01</span>About</a>
+      <a href="../index.html#experience"><span>02</span>Experience</a>
+      <a href="../index.html#projects"><span>03</span>Projects</a>
+      <a href="../index.html#stack"><span>04</span>Stack</a>
+      <a href="../index.html#contact"><span>05</span>Contact</a>
+      <a href="../My Resume.pdf" target="_blank" rel="noopener"><span>↗</span>Download CV</a>
+      <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M21.5 12h-2.2M4.7 12H2.5M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6M18.7 18.7l-1.6-1.6M6.9 6.9 5.3 5.3"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.5A8.3 8.3 0 0 1 9.5 3.8a8.3 8.3 0 1 0 10.7 10.7Z"/></svg>
+        <span class="tt-label">light mode</span>
+      </button>
+    </nav>
+  </div>
+
+  <main id="main">
+    <section class="case-hero">
+      <div class="container">
+        <a class="crumb" href="../index.html#projects">← all projects</a>
+        <h1 class="case-title">SmartGrader <span class="feature-sub" style="display:block">Handwritten exams, graded end-to-end</span></h1>
+        <p class="case-one-liner">Scanned handwritten exams go in; graded, rubric-scored results come out — with the teacher still in control of every mark.</p>
+        <ul class="case-meta" aria-label="Project facts">
+          <li><span class="k">period</span>summer 2025</li>
+          <li><span class="k">role</span>capstone · eduhk hong kong</li>
+          <li><span class="k">headline</span>3-stage pipeline</li>
+        </ul>
+        <div class="case-links">
+
+          <!-- TODO(SULTAN): add SmartGrader repo/demo links if public -->
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label mono"><span class="label-dot" aria-hidden="true"></span>the problem</p>
+        </header>
+        <div class="case-prose reveal">
+          <p>Grading stacks of scanned handwritten exams is slow, repetitive, and error-prone — and handwriting recognition alone isn't grading. The system has to find the answers on the page, read them, judge them against a rubric, and still let the teacher overrule it.</p>
+          <p>Built as the capstone of an intensive deep-learning and object-detection summer at The Education University of Hong Kong — YOLO training, data annotation, and evaluation with mAP and CER.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label mono"><span class="label-dot" aria-hidden="true"></span>how it works</p>
+        </header>
+        <ol class="steps reveal">
+          <li>
+            <h3>Locate — YOLOv8</h3>
+            <p>A trained YOLOv8 model detects and crops the answer sections on each scanned page, so downstream models read answers, not headers and doodles.</p>
+          </li>
+          <li>
+            <h3>Read — EasyOCR + TrOCR</h3>
+            <p>Two OCR engines team up on real student handwriting, converting each cropped region into text robust enough to score.</p>
+          </li>
+          <li>
+            <h3>Score — LLM against the rubric</h3>
+            <p>A language model evaluates each extracted answer against the teacher's rubric and proposes a mark with reasoning.</p>
+          </li>
+          <li>
+            <h3>Review — teacher in the loop</h3>
+            <p>A review/edit/export page shows every proposed score next to the original scan. The teacher confirms, adjusts, and exports — automation without surrendering judgment.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label mono"><span class="label-dot" aria-hidden="true"></span>results</p>
+        </header>
+        <ul class="stats-grid reveal" aria-label="Key results">
+          <li class="stat-card"><p class="stat-value">3-stage</p><p class="stat-label">detect → read → score pipeline</p></li>
+          <li class="stat-card"><p class="stat-value">YOLOv8</p><p class="stat-label">answer-section localization</p></li>
+          <li class="stat-card"><p class="stat-value">2×</p><p class="stat-label">OCR engines on handwriting</p></li>
+          <li class="stat-card"><p class="stat-value">100%</p><p class="stat-label">teacher control — review every mark</p></li>
+        </ul>
+        <ul class="chips reveal" aria-label="Stack"><li>YOLOv8</li><li>TrOCR</li><li>EasyOCR</li><li>LLM</li><li>PyTorch</li></ul>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <nav class="case-nav reveal" aria-label="More projects">
+          <a href="ironid.html"><span class="dir">← previous</span>IronID — On-Device Gym AI</a>
+          <a class="case-next" href="arabic-text-correction.html"><span class="dir">next →</span>Arabic Text Correction</a>
+        </nav>
+        <div class="case-cta reveal">
+          <p><strong>Want the full story?</strong> I'm happy to walk through the architecture, the failures, and the trade-offs.</p>
+          <a class="btn btn-solid" href="mailto:sultanalothale22@gmail.com">Get in touch</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="mono footer-note">Designed &amp; built by hand — no template. © 2026 sultan alaqili</p>
+      <a class="mono footer-top" href="../index.html">back home ↑</a>
+    </div>
+  </footer>
+
+  <script src="../scripts/main.js" defer></script>
+</body>
+</html>

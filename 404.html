@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — not found · Sultan Alaqili</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F5F5F3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%2300E5FF'/><stop offset='100%25' stop-color='%23B44DFF'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='%23060609'/><text x='50' y='69' text-anchor='middle' font-family='Arial,sans-serif' font-weight='bold' font-size='62' fill='url(%23g)'>S</text></svg>">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme") || "light";
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (t === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+          if (m) m.setAttribute("content", "#F5F5F3");
+        } else {
+          document.documentElement.removeAttribute("data-theme");
+          if (m) m.setAttribute("content", "#060609");
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060609; --text: #F2F2F7; --muted: #9C9CAF; --faint: #5E5E70;
+      --cyan: #00E5FF; --line: rgba(255, 255, 255, 0.08);
+      --line-hot: rgba(0, 229, 255, 0.4);
+      --gradient: linear-gradient(90deg, #00E5FF, #4D6BFE, #B44DFF);
+    }
+    [data-theme="light"] {
+      --bg: #F5F5F3; --text: #1B1B1F; --muted: #55555F; --faint: #8A8A94;
+      --cyan: #007A99; --line: rgba(20, 20, 30, 0.12);
+      --line-hot: rgba(0, 122, 153, 0.45);
+      --gradient: linear-gradient(90deg, #0087A8, #3D55D8, #8A2FD0);
+      color-scheme: light;
+    }
+    * { margin: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      min-height: 100svh; display: grid; place-items: center;
+      text-align: center; padding: 2rem;
+    }
+    .mono { font-family: "JetBrains Mono", monospace; font-size: 0.85rem; color: var(--faint); }
+    h1 {
+      font-size: clamp(4rem, 16vw, 9rem); line-height: 1;
+      background: var(--gradient);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+    }
+    p { color: var(--muted); margin-top: 1rem; }
+    a {
+      display: inline-block; margin-top: 2.2rem; color: var(--cyan);
+      font-family: "JetBrains Mono", monospace; font-size: 0.85rem;
+      text-decoration: none; border: 1px solid var(--line);
+      border-radius: 3px; padding: 0.8em 1.5em; transition: border-color 0.25s;
+    }
+    a:hover { border-color: var(--line-hot); }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="mono">error // page not found</p>
+    <h1>404</h1>
+    <p>This route doesn't exist — maybe it never shipped.</p>
+    <a href="/">← back home</a>
+  </main>
+</body>
+</html>

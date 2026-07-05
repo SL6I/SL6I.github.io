@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sl6i.github.io/sitemap.xml
