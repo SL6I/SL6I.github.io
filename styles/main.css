@@ -79,30 +79,43 @@
   color-scheme: light;
 }
 
-/* Smooth, deliberate theme hand-off: JS adds .theme-anim for the swap.
-   Only the key surfaces transition — avoids wildcard * perf hit. */
-html.theme-anim {
-  transition: background-color 0.35s ease, color 0.35s ease !important;
+/* Theme hand-off: modern Chromium browsers cross-fade a compositor snapshot.
+   The fallback keeps the same feel without animating every node/shadow. */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.32s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
+
 html.theme-anim body,
 html.theme-anim .nav,
 html.theme-anim .mobile-menu,
-html.theme-anim .hero,
-html.theme-anim .section,
-html.theme-anim .tl-card,
-html.theme-anim .proj,
+html.theme-anim .btn,
+html.theme-anim .chips li,
+html.theme-anim .theme-toggle,
+html.theme-anim .nav-links a,
+html.theme-anim .socials a,
 html.theme-anim .feature,
+html.theme-anim .proj,
+html.theme-anim .tl-card,
 html.theme-anim .stat-card,
 html.theme-anim .tech-grid li,
+html.theme-anim .flow-chip,
+html.theme-anim .contact-field,
+html.theme-anim .contact-submit,
+html.theme-anim .steps li,
+html.theme-anim .case-nav a,
+html.theme-anim .side-nav a,
 html.theme-anim .footer,
-html.theme-anim .flow-chip {
-  transition: background-color 0.35s ease, color 0.35s ease,
-              border-color 0.35s ease, box-shadow 0.35s ease !important;
-}
-html.theme-anim .socials a,
-html.theme-anim .theme-toggle,
-html.theme-anim .nav-links a {
-  transition: color 0.35s ease, fill 0.35s ease, border-color 0.35s ease !important;
+html.theme-anim svg {
+  transition:
+    background-color 0.28s ease,
+    color 0.28s ease,
+    border-color 0.28s ease,
+    fill 0.28s ease,
+    stroke 0.28s ease !important;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }

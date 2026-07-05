@@ -14,20 +14,15 @@
   /* ============ 0. Theme (dark "Electric" / light "Studio") ============
      The <head> inline script already set data-theme before first paint;
      here we wire the toggles and keep meta[theme-color] in sync.
-     .theme-anim makes the whole page cross-fade for one deliberate beat. */
+     View Transitions cross-fade the theme; .theme-anim is the fallback. */
 
   const THEME_KEY = "theme";
   const themeMeta = document.querySelector('meta[name="theme-color"]');
   const THEME_COLORS = { dark: "#060609", light: "#F5F5F3" };
   let themeAnimTimer;
 
-  function applyTheme(theme, animate) {
+  function paintTheme(theme) {
     const root = document.documentElement;
-    if (animate && !reducedMotion) {
-      root.classList.add("theme-anim");
-      clearTimeout(themeAnimTimer);
-      themeAnimTimer = setTimeout(() => root.classList.remove("theme-anim"), 500);
-    }
     if (theme === "light") root.setAttribute("data-theme", "light");
     else root.removeAttribute("data-theme");
     themeMeta?.setAttribute("content", THEME_COLORS[theme]);
@@ -37,6 +32,30 @@
       const label = btn.querySelector(".tt-label");
       if (label) label.textContent = theme === "light" ? "dark mode" : "light mode";
     });
+  }
+
+  function applyTheme(theme, animate) {
+    const root = document.documentElement;
+    clearTimeout(themeAnimTimer);
+
+    if (!animate || reducedMotion) {
+      root.classList.remove("theme-anim");
+      paintTheme(theme);
+      return;
+    }
+
+    if (document.startViewTransition) {
+      try {
+        document.startViewTransition(() => paintTheme(theme));
+        return;
+      } catch {
+        /* fall through to the CSS fallback */
+      }
+    }
+
+    root.classList.add("theme-anim");
+    paintTheme(theme);
+    themeAnimTimer = setTimeout(() => root.classList.remove("theme-anim"), 340);
   }
 
   applyTheme(document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark", false);
