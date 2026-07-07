@@ -16,7 +16,11 @@ All_Project/
 Thumbs.db
 .DS_Store
 
-# Editor files
+# Editor / tool files
 *.swp
 *.swo
 *~
+.claude/
+
+# Local development backups
+My_Web NEW FULL VERSION/

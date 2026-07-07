@@ -103,6 +103,8 @@ html.theme-anim .tl-card,
 html.theme-anim .stat-card,
 html.theme-anim .tech-grid li,
 html.theme-anim .flow-chip,
+html.theme-anim .notes-feature,
+html.theme-anim .note-card,
 html.theme-anim .contact-field,
 html.theme-anim .contact-submit,
 html.theme-anim .steps li,
@@ -991,6 +993,95 @@ h1, h2, h3 { font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
 [data-theme="light"] .hero-grid { opacity: 0.45; }
 [data-theme="light"] .flow-chip { background: var(--surface); }
 
+/* ---------- 14b. AI notes ---------- */
+.notes-hero .section-label { margin-top: 1.4rem; }
+.notes-hero .case-one-liner { max-width: 66ch; }
+
+.notes-section { padding-top: clamp(3rem, 7vw, 5rem); }
+
+.notes-feature {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: linear-gradient(160deg, var(--surface), var(--bg));
+  padding: clamp(1.6rem, 4vw, 3rem);
+  margin-bottom: 1.6rem;
+}
+.notes-feature::after {
+  content: "";
+  position: absolute;
+  right: -5rem;
+  top: -5rem;
+  width: 16rem;
+  height: 16rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--cyan-soft), transparent 70%);
+  opacity: var(--deco-opacity);
+  pointer-events: none;
+}
+.notes-feature h2 {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  margin-top: 0.9rem;
+}
+.notes-feature p:not(.note-status) {
+  position: relative;
+  z-index: 1;
+  color: var(--muted);
+  max-width: 68ch;
+  margin-top: 1rem;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+.note-card {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  padding: 1.45rem;
+  min-height: 17rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.note-card:hover {
+  border-color: var(--line-hot);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+}
+.note-status {
+  width: max-content;
+  color: var(--cyan);
+  border: 1px solid var(--line-hot);
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.note-card h3 {
+  font-size: 1.25rem;
+  margin-top: 1.1rem;
+}
+.note-card p {
+  color: var(--muted);
+  margin-top: 0.75rem;
+  font-size: 0.97rem;
+}
+.note-topics { margin-top: auto; padding-top: 1.1rem; }
+[data-theme="light"] .notes-feature,
+[data-theme="light"] .note-card {
+  box-shadow: 0 4px 18px rgba(20, 20, 30, 0.05);
+}
+[data-theme="light"] .notes-feature { background: var(--surface); }
+
 /* ---------- 15. Case-study pages ---------- */
 .case-hero { padding: 8.5rem 0 0; }
 .crumb {
@@ -1089,6 +1180,7 @@ h1, h2, h3 { font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
   .nav-toggle { display: flex; }
   .stack-row { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
+  .notes-grid { grid-template-columns: 1fr; }
   .contact-layout {
     grid-template-columns: 1fr;
     align-items: start;
