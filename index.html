@@ -428,26 +428,26 @@
           </article>
 
           <article class="proj reveal">
-            <div class="proj-head">
-              <p class="mono proj-stat">77.47 <span>F1</span></p>
-              <p class="mono proj-date">jan 2026</p>
-            </div>
-            <h3>Saudi Dialect End-of-Utterance Detection</h3>
-            <p>
-              Voice agents interrupt people mid-sentence because no model knows when the
-              Saudi dialect is <em>done</em>. Fine-tuned SaudiBERT on a hybrid dataset —
-              public data plus 2,136 ALLaM-generated synthetic edge cases — so agents
-              finally know when to speak.
-            </p>
-            <ul class="chips" aria-label="Tools"><li>SaudiBERT</li><li>BERT</li><li>NLP</li></ul>
-            <p class="proj-links mono">
-              <a href="projects/saudi-eou.html">case study →</a>
-              <a href="https://huggingface.co/spaces/SuperSl6/saudi-eou-model-final" target="_blank" rel="noopener">live demo ↗</a>
-              <a href="https://huggingface.co/SuperSl6/saudi-eou-model-final" target="_blank" rel="noopener">model ↗</a>
-              <a href="https://huggingface.co/datasets/SuperSl6/saudi-eou-dataset-final" target="_blank" rel="noopener">dataset ↗</a>
-              <a href="assets/projects/saudi-eou/Saudi-EOU-Report.pdf" target="_blank" rel="noopener">report ↗</a>
-            </p>
-          </article>
+          <div class="proj-head">
+            <p class="mono proj-stat">AWS <span>EC2</span></p>
+            <p class="mono proj-date">jan 2026 — present</p>
+          </div>
+          <h3>SaudiEOU — Saudi Arabic Turn Detection</h3>
+          <p>
+            Fine-tuned SaudiBERT for text-based turn completion, then built a tested
+            FastAPI service and Arabic web demo. Deployed privately on AWS EC2
+            with Docker, GitHub Actions delivery, CloudWatch monitoring,
+            and MLflow model comparison.
+          </p>
+          <ul class="chips" aria-label="Tools"><li>SaudiBERT</li><li>FastAPI</li><li>Docker</li><li>AWS EC2</li><li>CloudWatch</li><li>MLflow</li></ul>
+          <p class="proj-links mono">
+            <a href="projects/saudi-eou.html">case study →</a>
+            <a href="projects/saudi-eou.html#architecture">architecture →</a>
+            <a href="https://huggingface.co/spaces/SuperSl6/saudi-eou-model-final" target="_blank" rel="noopener">model demo ↗</a>
+            <a href="https://huggingface.co/SuperSl6/saudi-eou-model-final" target="_blank" rel="noopener">model ↗</a>
+            <a href="https://huggingface.co/datasets/SuperSl6/saudi-eou-dataset-final" target="_blank" rel="noopener">dataset ↗</a>
+          </p>
+        </article>
 
           <article class="proj reveal">
             <div class="proj-head">
@@ -601,10 +601,14 @@
             </ul></dd>
           </div>
           <div class="stack-row reveal">
-            <dt><span class="mono stack-verb">ships</span> Production</dt>
+            <dt><span class="mono stack-verb">ships</span> ML Engineering</dt>
             <dd><ul class="chips stack-chips" aria-label="Tools">
               <li>Python</li>
               <li>FastAPI</li>
+              <li>Docker</li>
+              <li>AWS EC2</li>
+              <li>CloudWatch / SNS</li>
+              <li>MLflow</li>
               <li>Gradio</li>
               <li>Quantization &amp; Pruning</li>
               <li>GitHub Actions CI/CD</li>

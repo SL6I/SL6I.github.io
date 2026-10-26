@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Saudi Dialect End-of-Utterance Detection — Sultan Alaqili</title>
-  <meta name="description" content="Fine-tuned SaudiBERT (77.47 F1) decides in real time whether a Saudi-dialect speaker has finished their turn — hybrid public + ALLaM-synthetic dataset, shipped with a LiveKit adapter on Hugging Face.">
+  <title>SaudiEOU — Arabic NLP &amp; ML Deployment — Sultan Alaqili</title>
+  <meta name="description" content="Saudi Arabic turn-completion classification with SaudiBERT, a private FastAPI deployment on AWS EC2, Docker, GitHub Actions, CloudWatch, and MLflow evaluation.">
   <link rel="canonical" href="https://sl6i.github.io/projects/saudi-eou.html">
   <meta name="theme-color" content="#F5F5F3">
 
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Saudi Dialect End-of-Utterance Detection — Sultan Alaqili">
-  <meta property="og:description" content="Fine-tuned SaudiBERT (77.47 F1) decides in real time whether a Saudi-dialect speaker has finished their turn — hybrid public + ALLaM-synthetic dataset, shipped with a LiveKit adapter on Hugging Face.">
+  <meta property="og:title" content="SaudiEOU — Arabic NLP &amp; ML Deployment — Sultan Alaqili">
+  <meta property="og:description" content="Saudi Arabic turn-completion classification with SaudiBERT, a private FastAPI deployment on AWS EC2, Docker, GitHub Actions, CloudWatch, and MLflow evaluation.">
   <meta property="og:url" content="https://sl6i.github.io/projects/saudi-eou.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:creator" content="@SuperSl6">
@@ -44,9 +44,9 @@
   {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
-    "name": "Saudi Dialect End-of-Utterance Detection",
+    "name": "SaudiEOU — Saudi Arabic End-of-Utterance Detection",
     "url": "https://sl6i.github.io/projects/saudi-eou.html",
-    "description": "Fine-tuned SaudiBERT (77.47 F1) decides in real time whether a Saudi-dialect speaker has finished their turn — hybrid public + ALLaM-synthetic dataset, shipped with a LiveKit adapter on Hugging Face.",
+    "description": "Saudi Arabic turn-completion classification with SaudiBERT, a private FastAPI deployment on AWS EC2, Docker, GitHub Actions, CloudWatch, and MLflow evaluation.",
     "author": { "@type": "Person", "name": "Sultan Alaqili", "url": "https://sl6i.github.io/" }
   }
   </script>
@@ -108,18 +108,19 @@
     <section class="case-hero">
       <div class="container">
         <a class="crumb" href="../index.html#projects">← all projects</a>
-        <h1 class="case-title">Saudi Dialect End-of-Utterance Detection</h1>
-        <p class="case-one-liner">Voice agents interrupt people because no model knows when a Saudi speaker is actually done. This one does — from text alone, fast enough for a live call.</p>
+        <h1 class="case-title">SaudiEOU: Saudi Arabic End-of-Utterance Detection</h1>
+        <p class="case-one-liner">From a SaudiBERT classifier to a privately deployed inference service: an Arabic web demo, tested API, Docker delivery, CloudWatch monitoring, and tracked model evaluation.</p>
         <ul class="case-meta" aria-label="Project facts">
-          <li><span class="k">period</span>jan 2026</li>
+          <li><span class="k">period</span>jan 2026 — present</li>
           <li><span class="k">role</span>solo project</li>
-          <li><span class="k">headline</span>77.47 F1 · ~110M params</li>
+          <li><span class="k">deployment</span>private AWS EC2</li>
         </ul>
         <div class="case-links">
-          <a class="btn btn-ghost" href="https://huggingface.co/spaces/SuperSl6/saudi-eou-model-final" target="_blank" rel="noopener">live demo ↗</a>
+          <a class="btn btn-ghost" href="#architecture">architecture ↓</a>
+          <a class="btn btn-ghost" href="https://huggingface.co/spaces/SuperSl6/saudi-eou-model-final" target="_blank" rel="noopener">Hugging Face demo ↗</a>
           <a class="btn btn-ghost" href="https://huggingface.co/SuperSl6/saudi-eou-model-final" target="_blank" rel="noopener">model ↗</a>
           <a class="btn btn-ghost" href="https://huggingface.co/datasets/SuperSl6/saudi-eou-dataset-final" target="_blank" rel="noopener">dataset ↗</a>
-          <a class="btn btn-ghost" href="../assets/projects/saudi-eou/Saudi-EOU-Report.pdf" target="_blank" rel="noopener">report ↗</a>
+          <a class="btn btn-ghost" href="../assets/projects/saudi-eou/Saudi-EOU-Report.pdf" target="_blank" rel="noopener">original training report ↗</a>
         </div>
       </div>
     </section>
@@ -128,35 +129,37 @@
       <div class="container">
         <header class="section-head reveal">
           <p class="section-label mono"><span class="label-dot" aria-hidden="true"></span>the problem</p>
+          <h2>Has the speaker finished?</h2>
         </header>
         <div class="case-prose reveal">
-          <p>Reply too early and the agent interrupts the user. Reply too late and the conversation feels broken. End-of-utterance detection is the model that decides the exact moment to speak — and for Saudi dialect, with its natural pauses, hesitations, and local vernacular, off-the-shelf models simply don't solve it.</p>
-          <p>Two constraints shaped everything: <strong>no public dataset</strong> captured real conversational Saudi dialect with pause/incomplete-turn signals, and the decision must land in <strong>milliseconds</strong> inside a live call — ruling out heavy 7B+ generative LLMs from the start.</p>
+          <p>Reply too early and a voice agent can interrupt a speaker. Wait too long and the conversation becomes slow. SaudiEOU explores this problem by classifying Saudi Arabic text as <strong>COMPLETE</strong> or <strong>INCOMPLETE</strong>.</p>
+          <p>The project began with a hybrid dataset and SaudiBERT fine-tuning, followed by a LiveKit prototype for decisions on speech-to-text transcripts. I then built a separate serving application to make the classifier usable through an API and Arabic web interface.</p>
         </div>
       </div>
     </section>
 
-    <section class="case-section">
+    <section class="case-section" id="architecture">
       <div class="container">
         <header class="section-head reveal">
-          <p class="section-label mono"><span class="label-dot" aria-hidden="true"></span>how it works</p>
+          <p class="section-label mono"><span class="label-dot" aria-hidden="true"></span>architecture</p>
+          <h2>From text to a served prediction</h2>
         </header>
         <ol class="steps reveal">
           <li>
-            <h3>A smart hybrid dataset</h3>
-            <p>Curated public Saudi-dialect data (Najdi, Hijazi, 44 domains) combined with <strong>2,136 synthetic examples</strong> generated by ALLaM, the Saudi LLM — specifically covering hesitations and edge cases the public data missed.</p>
+            <h3>Prepare data and fine-tune SaudiBERT</h3>
+            <p>Combined public Saudi-dialect text with <strong>2,136 ALLaM-generated examples</strong>. Normalized text, generated incomplete samples, and balanced the training split. Compared SaudiBERT, MARBERTv2, and CAMeLBERT-DA before fine-tuning SaudiBERT for the binary classification task.</p>
           </li>
           <li>
-            <h3>Preprocessing that mimics real ASR</h3>
-            <p>Text normalized to look like raw speech-to-text output: unified Alef/Ya, stripped diacritics and punctuation. Incomplete samples generated by trimming final words, then upsampled to a clean 50/50 balance.</p>
+            <h3>Validate requests and run CPU inference</h3>
+            <p>FastAPI loads the Hugging Face classifier at startup. <strong>POST /predict</strong> requires an API key and accepts validated text up to 1,000 characters. It returns the predicted label and a model score. <strong>GET /health</strong> provides a service health check.</p>
           </li>
           <li>
-            <h3>Why BERT, not an LLM</h3>
-            <p>Bidirectional context plus ~110M parameters equals real-time speed. Benchmarked three Arabic encoders: <strong>SaudiBERT (~79.32 F1)</strong> beat MARBERTv2 (~76.52) and CAMeLBERT-DA — its Saudi text corpus gave it the strongest grasp of local idioms.</p>
+            <h3>Add an Arabic web demonstration</h3>
+            <p>A small HTML, CSS, and JavaScript interface calls the same inference path through <strong>/demo/predict</strong>, enabled by configuration. The web interface and API are packaged together in Docker and deployed on AWS EC2.</p>
           </li>
           <li>
-            <h3>Fine-tune and ship</h3>
-            <p>Fine-tuned at LR 1e-5, batch 16, best-checkpoint saving — then shipped as a Python SDK plus a <strong>LiveKit adapter</strong> that intercepts the STT stream and fires a REPLY signal above a 0.75 confidence threshold. Model, dataset, and live demo are public on Hugging Face.</p>
+            <h3>Keep the deployment private</h3>
+            <p>The EC2 application is reached through an <strong>SSH tunnel</strong>, rather than a public HTTPS endpoint. The Hugging Face demo linked above is a separate model demonstration; it is not the private AWS deployment.</p>
           </li>
         </ol>
       </div>
@@ -165,15 +168,71 @@
     <section class="case-section">
       <div class="container">
         <header class="section-head reveal">
-          <p class="section-label mono"><span class="label-dot" aria-hidden="true"></span>results</p>
+          <p class="section-label mono"><span class="label-dot" aria-hidden="true"></span>delivery &amp; monitoring</p>
+          <h2>Test, deploy, and observe</h2>
         </header>
-        <ul class="stats-grid reveal" aria-label="Key results">
-          <li class="stat-card"><p class="stat-value">77.47</p><p class="stat-label">F1 on held-out test set</p></li>
-          <li class="stat-card"><p class="stat-value">~110M</p><p class="stat-label">parameters — real-time ready</p></li>
-          <li class="stat-card"><p class="stat-value">2,136</p><p class="stat-label">ALLaM synthetic edge cases</p></li>
-          <li class="stat-card"><p class="stat-value">0.75</p><p class="stat-label">REPLY confidence threshold</p></li>
+        <ol class="steps reveal">
+          <li>
+            <h3>Test the API and web interface</h3>
+            <p>Pytest checks cover valid and missing API keys, the homepage, demo predictions, and the disabled-demo configuration. Tests use a stub model to check application behavior without downloading model weights.</p>
+          </li>
+          <li>
+            <h3>Build versioned container images</h3>
+            <p>GitHub Actions runs tests and Docker builds. Successful main-branch pushes publish a container image tagged with the commit SHA, so a deployment can be tied to a specific source revision.</p>
+          </li>
+          <li>
+            <h3>Deploy through AWS Systems Manager</h3>
+            <p>A separately triggered workflow authenticates to AWS using <strong>OIDC</strong> and deploys through <strong>Systems Manager</strong>. A candidate container must pass health and prediction checks before promotion. The deployment script retains the previous container for rollback if the new release fails.</p>
+          </li>
+          <li>
+            <h3>Monitor inference requests</h3>
+            <p>Structured logs record prediction request paths, HTTP status codes, and latency in <strong>CloudWatch</strong>. A dashboard shows request activity, latency, and EC2 CPU utilization. An HTTP 5xx alarm connects to <strong>Amazon SNS</strong> email notifications; its notification path was tested manually.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="case-section" id="evaluation">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label mono"><span class="label-dot" aria-hidden="true"></span>internal evaluation</p>
+          <h2>Compare the model with a baseline</h2>
+        </header>
+        <ul class="stats-grid reveal" aria-label="Internal test measurements">
+          <li class="stat-card"><p class="stat-value">889</p><p class="stat-label">internal test examples</p></li>
+          <li class="stat-card"><p class="stat-value">80.76%</p><p class="stat-label">SaudiBERT accuracy</p></li>
+          <li class="stat-card"><p class="stat-value">80.34%</p><p class="stat-label">SaudiBERT macro F1</p></li>
+          <li class="stat-card"><p class="stat-value">56.97%</p><p class="stat-label">TF-IDF baseline macro F1</p></li>
         </ul>
-        <ul class="chips reveal" aria-label="Stack"><li>SaudiBERT</li><li>Transformers</li><li>PyTorch</li><li>ALLaM</li><li>LiveKit</li><li>OpenAI STT</li></ul>
+        <div class="case-prose reveal">
+          <p>Evaluated the serving code on the existing test split and compared its predictions with a character-level <strong>TF-IDF + Logistic Regression</strong> baseline. <strong>MLflow</strong> records the comparison runs, parameters, metrics, artifacts, and model-selection decision.</p>
+          <p>SaudiBERT produced 109 INCOMPLETE-to-COMPLETE errors and 62 COMPLETE-to-INCOMPLETE errors, compared with 155 and 203 for the baseline. These are potential early or delayed response decisions inferred from text labels, not observed interruptions in live conversations.</p>
+          <p>The earlier <strong>77.47% F1</strong> figure refers to the COMPLETE class; macro F1 averages both classes. The comparison supported retaining the existing SaudiBERT deployment without retraining SaudiBERT or redeploying the service.</p>
+          <p><strong>Evaluation scope:</strong> public and synthetic data were combined before splitting, and related truncated utterances may occur across splits. These scores are internal measurements, not independent estimates of production performance. External evaluation and manual review of the selected error sample remain unfinished.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label mono"><span class="label-dot" aria-hidden="true"></span>deployment measurements</p>
+          <h2>Measure latency and throughput</h2>
+        </header>
+        <ol class="steps reveal">
+          <li>
+            <h3>Sequential requests</h3>
+            <p>A recorded EC2-local run completed 20 requests: <strong>67.52 ms average latency</strong>, 68.50 ms P95, and 14.78 requests per second.</p>
+          </li>
+          <li>
+            <h3>Concurrent requests</h3>
+            <p>A recorded run completed 30 requests: <strong>240.89 ms average latency</strong>, 287.17 ms P95, and 20.27 requests per second. Concurrency increased throughput while increasing response time per request.</p>
+          </li>
+        </ol>
+        <div class="case-prose reveal">
+          <p>These small runs used repeated input sent locally within EC2. They do not measure public internet latency, establish production capacity, or guarantee a service-level objective. The current monitoring alarm covers logged HTTP 5xx errors; complete instance downtime and model-quality drift require additional monitoring.</p>
+        </div>
+        <ul class="chips reveal" aria-label="Stack"><li>Python</li><li>SaudiBERT</li><li>PyTorch</li><li>Transformers</li><li>FastAPI</li><li>Docker</li><li>AWS EC2</li><li>GitHub Actions</li><li>AWS SSM / OIDC</li><li>CloudWatch</li><li>Amazon SNS</li><li>MLflow</li><li>Scikit-learn</li></ul>
       </div>
     </section>
 
