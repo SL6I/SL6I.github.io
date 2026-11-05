@@ -1205,6 +1205,8 @@ h1, h2, h3 { font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
   .contact-field { padding: 1.2rem 1.25rem; }
   .contact-message { min-height: 12rem; }
   .contact-submit { min-height: 4rem; }
+  .tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.4rem 1rem; }
+  .tech-grid span { text-align: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
