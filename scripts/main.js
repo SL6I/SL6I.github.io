@@ -190,6 +190,17 @@
     }
   });
 
+  // A mailto form POST is ignored by many browsers; open a pre-filled email instead.
+  const contactForm = document.querySelector(".contact-form");
+  contactForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = new FormData(contactForm);
+    const name = data.get("name").trim();
+    const subject = `Portfolio message from ${name}`;
+    const body = `${data.get("message").trim()}\n\n${name}\n${data.get("email").trim()}`;
+    location.href = `${contactForm.getAttribute("action")}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+
   /* ============ 5. Scroll progress bar ============ */
 
   const progressBar = document.getElementById("scroll-progress");

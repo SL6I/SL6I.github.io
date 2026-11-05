@@ -533,6 +533,7 @@ h1, h2, h3 { font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
 .socials li:nth-child(3) { order: 3; }
 .socials li:nth-child(2) { order: 4; }
 .socials li:nth-child(5) { order: 5; }
+.socials li:nth-child(6) { order: 6; }
 .socials a {
   display: grid; place-items: center;
   width: 2.6rem; height: 2.6rem;
