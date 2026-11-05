@@ -14,7 +14,12 @@
   <meta property="og:title" content="Sultan Alaqili — AI/ML Engineer">
   <meta property="og:description" content="Oxford-trained AI/ML engineer building systems across vision, language, speech, retrieval, and edge AI.">
   <meta property="og:url" content="https://sl6i.github.io/">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://sl6i.github.io/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Sultan Alaqili — AI/ML Engineer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://sl6i.github.io/assets/og-image.png">
   <meta name="twitter:creator" content="@SuperSl6">
 
   <!-- Favicon -->
@@ -231,7 +236,7 @@
             <li class="stat-card"><p class="stat-value">3.97<span class="mono"> / 4.00</span></p><p class="stat-label">gpa — b.sc. artificial intelligence</p></li>
             <li class="stat-card"><p class="stat-value">8</p><p class="stat-label">ai systems &amp; research projects</p></li>
             <li class="stat-card"><p class="stat-value">45+</p><p class="stat-label">engineers trained</p></li>
-            <li class="stat-card"><p class="stat-value">Oxford</p><p class="stat-label">6-week ai residency · completed</p></li>
+            <li class="stat-card stat-spotlight"><p class="stat-value">1 <span class="mono">of</span> 11</p><p class="stat-label">selected from ~24,000 applicants — oxford × kaust</p></li>
           </ul>
         </div>
       </div>
@@ -448,6 +453,16 @@
             with Docker, GitHub Actions delivery, CloudWatch monitoring,
             and MLflow model comparison.
           </p>
+          <div class="demo" data-eou>
+            <p class="mono demo-label"><span>is the speaker done?</span><span data-eou-count>1 / 6</span></p>
+            <p class="eou-text" lang="ar" dir="rtl" data-eou-text></p>
+            <div class="demo-toggle mono" data-eou-guesses>
+              <button type="button" data-guess="1">done ✓</button>
+              <button type="button" data-guess="0">still talking …</button>
+            </div>
+            <p class="mono demo-readout" aria-live="polite" data-eou-result></p>
+            <p class="mono demo-hint">✎ real sentences from the public test set — that's the call the model makes</p>
+          </div>
           <ul class="chips" aria-label="Tools"><li>SaudiBERT</li><li>FastAPI</li><li>Docker</li><li>AWS EC2</li><li>CloudWatch</li><li>MLflow</li></ul>
           <p class="proj-links mono">
             <a href="projects/saudi-eou.html">case study →</a>
@@ -471,6 +486,15 @@
               <strong>99.02% accuracy</strong>, with a GPT coach for routines and CI/CD
               via GitHub Actions.
             </p>
+            <div class="demo" data-size>
+              <div class="demo-toggle mono" role="group" aria-label="Model version">
+                <button type="button" aria-pressed="false" data-state="before">baseline</button>
+                <button type="button" aria-pressed="true" data-state="after">pruned + float16</button>
+              </div>
+              <div class="size-bar" aria-hidden="true"><span></span></div>
+              <p class="mono demo-readout" aria-live="polite" data-size-readout></p>
+              <p class="mono demo-hint">✎ flip it — same model, half the size</p>
+            </div>
             <ul class="chips" aria-label="Tools"><li>TFLite</li><li>MobileNetV3</li><li>Distillation</li><li>Pruning</li></ul>
             <p class="proj-links mono">
               <a href="projects/ironid.html">case study →</a>
@@ -682,6 +706,8 @@
           </ul>
             <div class="contact-divider" aria-hidden="true"></div>
             <div class="contact-info">
+              <p class="contact-email">Email: <a href="mailto:sultanalothale22@gmail.com">sultanalothale22@gmail.com</a>
+                <button class="copy-btn mono" type="button" id="copy-email" data-email="sultanalothale22@gmail.com">copy</button></p>
               <p>Location: Riyadh, Saudi Arabia · Remote-friendly</p>
               <p>Status: Open to Software Engineer (AI/ML) roles · Full-time</p>
             </div>

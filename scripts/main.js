@@ -201,6 +201,78 @@
     location.href = `${contactForm.getAttribute("action")}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 
+  /* ============ 4b. Project demos ============ */
+
+  // IronID: baseline vs pruned + Float16 (numbers from the case study).
+  const sizeDemo = document.querySelector("[data-size]");
+  if (sizeDemo) {
+    const states = {
+      before: { width: "100%", text: "11.37 MB · MobileNetV3-Large before pruning + Float16" },
+      after: { width: "50.3%", text: "5.72 MB · 99.02% accuracy · 30–35 ms on-device" },
+    };
+    const bar = sizeDemo.querySelector(".size-bar span");
+    const readout = sizeDemo.querySelector("[data-size-readout]");
+    const buttons = sizeDemo.querySelectorAll("[data-state]");
+    const show = (key) => {
+      bar.style.setProperty("--size", states[key].width);
+      readout.textContent = states[key].text;
+      buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.state === key)));
+    };
+    buttons.forEach((b) => b.addEventListener("click", () => show(b.dataset.state)));
+    show("after");
+  }
+
+  // SaudiEOU: guess whether the speaker finished. Sentences and labels are
+  // taken verbatim from the test split of SuperSl6/saudi-eou-dataset-final.
+  const eouDemo = document.querySelector("[data-eou]");
+  if (eouDemo) {
+    const samples = [
+      ["ما ودك في قهوة او شاهي", 1],
+      ["بخصوص العشاء والله ما ادري وش", 0],
+      ["عندي حجز علي خطوط ناس بكرا", 1],
+      ["القهوة هذي حلوة بس احس", 0],
+      ["وش افضل فيلم شفته بحياتك وليه عجبك", 1],
+      ["بكم ذا التلفزيون من سامسونج وهل السعر", 0],
+    ];
+    const text = eouDemo.querySelector("[data-eou-text]");
+    const count = eouDemo.querySelector("[data-eou-count]");
+    const guesses = eouDemo.querySelector("[data-eou-guesses]");
+    const result = eouDemo.querySelector("[data-eou-result]");
+    const labelName = (v) => (v ? "done" : "still talking");
+    let i = 0;
+    let score = 0;
+
+    const render = () => {
+      text.textContent = samples[i][0];
+      count.textContent = `${i + 1} / ${samples.length}`;
+      guesses.hidden = false;
+      result.replaceChildren();
+    };
+
+    guesses.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-guess]");
+      if (!btn) return;
+      const right = Number(btn.dataset.guess) === samples[i][1];
+      if (right) score++;
+      guesses.hidden = true;
+      const verdict = document.createElement("span");
+      verdict.className = right ? "ok" : "";
+      verdict.textContent = `${right ? "✓ right" : "✗ not quite"} — label: ${labelName(samples[i][1])}  `;
+      const next = document.createElement("button");
+      next.type = "button";
+      next.className = "copy-btn mono";
+      next.textContent = i < samples.length - 1 ? "next →" : "see score";
+      next.addEventListener("click", () => {
+        if (++i < samples.length) return render();
+        result.innerHTML = `You: ${score} / ${samples.length} · SaudiBERT: 80.76% on 889 held-out sentences · <a href="https://huggingface.co/spaces/SuperSl6/saudi-eou-model-final" target="_blank" rel="noopener">try the model ↗</a>`;
+        count.textContent = "done";
+      });
+      result.replaceChildren(verdict, next);
+    });
+
+    render();
+  }
+
   /* ============ 5. Scroll progress bar ============ */
 
   const progressBar = document.getElementById("scroll-progress");

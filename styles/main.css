@@ -817,6 +817,67 @@ h1, h2, h3 { font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
 .proj-links a { color: var(--faint); text-decoration: none; transition: color 0.25s; }
 .proj-links a:hover { color: var(--cyan); }
 
+/* Small hands-on proof inside a project card */
+.demo {
+  margin-top: 1.3rem;
+  border: 1px dashed var(--line-hot); border-radius: 6px;
+  background: var(--cyan-soft);
+  padding: 1rem 1.1rem 0.9rem;
+}
+.proj .demo p { margin-top: 0; }
+.demo-label { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.72rem; color: var(--faint); }
+.demo-toggle { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
+.demo-toggle[hidden] { display: none; }
+.demo-toggle button {
+  font: inherit; font-size: 0.75rem;
+  padding: 0.45em 0.95em;
+  border: 1px solid var(--line); border-radius: 3px;
+  background: var(--bg); color: var(--muted);
+  cursor: pointer;
+  transition: border-color 0.25s, color 0.25s, background 0.25s;
+}
+.demo-toggle button:hover { border-color: var(--line-hot); color: var(--cyan); }
+.demo-toggle button[aria-pressed="true"] { border-color: var(--cyan); color: var(--cyan); }
+.demo-toggle button:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+.proj .demo .demo-readout { margin-top: 0.75rem; font-size: 0.78rem; color: var(--text); min-height: 1.4em; }
+.demo-readout a { color: var(--cyan); }
+.demo-readout .ok { color: var(--cyan); }
+.proj .demo .demo-hint { margin-top: 0.55rem; font-size: 0.68rem; color: var(--faint); }
+
+.proj .demo .eou-text {
+  margin-top: 0.7rem;
+  font-family: system-ui, "Segoe UI", Tahoma, sans-serif;
+  font-size: 1.15rem; line-height: 1.5;
+  color: var(--text);
+}
+
+.size-bar {
+  margin-top: 0.9rem; height: 0.55rem;
+  border-radius: 3px; background: var(--line);
+  overflow: hidden;
+}
+.size-bar span {
+  display: block; height: 100%; width: var(--size, 50.3%);
+  background: var(--gradient);
+  transition: width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.stat-spotlight { border-color: var(--line-hot); background: linear-gradient(var(--cyan-soft), var(--cyan-soft)), var(--surface); }
+.stat-spotlight .stat-value { color: var(--cyan); }
+.stat-value .mono { font-size: 0.5em; font-weight: 400; color: var(--faint); }
+
+.copy-btn {
+  margin-left: 0.5rem;
+  font-size: 0.72rem;
+  padding: 0.2em 0.7em;
+  border: 1px solid var(--line); border-radius: 3px;
+  background: transparent; color: var(--muted);
+  cursor: pointer;
+  transition: border-color 0.25s, color 0.25s;
+}
+.copy-btn:hover { border-color: var(--line-hot); color: var(--cyan); }
+.contact-email a { color: inherit; }
+
 /* ---------- 11. Stack ---------- */
 /* Brand icons, reference-style: no cards — big, calm, centered */
 .tech-grid {
