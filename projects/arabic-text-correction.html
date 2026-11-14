@@ -145,11 +145,11 @@
         </header>
         <ol class="steps reveal">
           <li>
-            <h3>Prepare QALB-2014 for seq2seq</h3>
+            <h3>Data preprocessing — QALB-2014 for seq2seq</h3>
             <p>Processed the benchmark — Arabic text with annotated errors and gold corrections — into clean input-output pairs for sequence-to-sequence training.</p>
           </li>
           <li>
-            <h3>Give the model morphology explicitly</h3>
+            <h3>Feature engineering — grammatical context with POS tags</h3>
             <p>Applied Arabic POS tagging and appended the tags as auxiliary tokens, handing the model grammatical context that subword tokenization alone can't capture.</p>
           </li>
           <li>
