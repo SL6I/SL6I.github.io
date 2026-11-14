@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>NeoBalady+ — Smart City AI — Sultan Alaqili</title>
-  <meta name="description" content="Graduation project: 6 AI models on one GPU for smart-city complaint operations — vision-language triage, Saudi-dialect voice, SLA prediction (R² 0.963), ConvLSTM hotspot forecasting, and RAG assistants.">
+  <meta name="description" content="Graduation project: an AI backend prototype for smart-city complaint operations — vision-language triage, Saudi-dialect voice, SLA prediction, ConvLSTM hotspot forecasting, and RAG assistants.">
   <link rel="canonical" href="https://sl6i.github.io/projects/neobalady.html">
   <meta name="theme-color" content="#F5F5F3">
 
   <meta property="og:type" content="article">
   <meta property="og:title" content="NeoBalady+ — Smart City AI — Sultan Alaqili">
-  <meta property="og:description" content="Graduation project: 6 AI models on one GPU for smart-city complaint operations — vision-language triage, Saudi-dialect voice, SLA prediction (R² 0.963), ConvLSTM hotspot forecasting, and RAG assistants.">
+  <meta property="og:description" content="Graduation project: an AI backend prototype for smart-city complaint operations — vision-language triage, Saudi-dialect voice, SLA prediction, ConvLSTM hotspot forecasting, and RAG assistants.">
   <meta property="og:url" content="https://sl6i.github.io/projects/neobalady.html">
   <meta property="og:image" content="https://sl6i.github.io/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -51,7 +51,7 @@
     "@type": "CreativeWork",
     "name": "NeoBalady+ — Smart City AI",
     "url": "https://sl6i.github.io/projects/neobalady.html",
-    "description": "Graduation project: 6 AI models on one GPU for smart-city complaint operations — vision-language triage, Saudi-dialect voice, SLA prediction (R² 0.963), ConvLSTM hotspot forecasting, and RAG assistants.",
+    "description": "Graduation project: an AI backend prototype for smart-city complaint operations — vision-language triage, Saudi-dialect voice, SLA prediction, ConvLSTM hotspot forecasting, and RAG assistants.",
     "author": { "@type": "Person", "name": "Sultan Alaqili", "url": "https://sl6i.github.io/" }
   }
   </script>
@@ -114,11 +114,10 @@
       <div class="container">
         <a class="crumb" href="../index.html#projects">← all projects</a>
         <h1 class="case-title">NeoBalady+ <span class="feature-sub" style="display:block">Multi-model AI for smart-city operations</span></h1>
-        <p class="case-one-liner">Our graduation project: an AI backend exploring how a Balady-style municipal complaints workflow could go from reactive inbox to predictive city brain — six specialized models running together on a single T4 GPU, built and evaluated as an academic prototype.</p>
+        <p class="case-one-liner">Our graduation project: an AI backend exploring how a Balady-style municipal complaints workflow could go from reactive inbox to predictive city brain — combining specialized models in an academic prototype.</p>
         <ul class="case-meta" aria-label="Project facts">
           <li><span class="k">period</span>sep 2025 — jun 2026</li>
           <li><span class="k">role</span>graduation project · team</li>
-          <li><span class="k">headline</span>R² 0.963 SLA forecast</li>
         </ul>
       </div>
     </section>
@@ -130,7 +129,6 @@
         </header>
         <div class="case-prose reveal">
           <p>A large city receives thousands of municipal reports weekly — potholes, broken lights, infrastructure damage — and in the traditional workflow, staff classify, prioritize, and dispatch every ticket by hand. Photos are exaggerated, duplicates flood in from different angles and times of day, and nobody knows how long a repair will actually take.</p>
-          <p>The engineering constraint made it harder: <strong>everything had to run on one T4 GPU</strong>. Qwen2-VL (7B), a fine-tuned Whisper (764M), a ConvLSTM, a Random Forest, and RAG pipelines — simultaneously. That meant aggressive quantization and careful scheduling, not just model picking.</p>
         </div>
       </div>
     </section>
@@ -143,15 +141,15 @@
         <ol class="steps reveal">
           <li>
             <h3>Vision-language triage — Qwen2-VL-7B in 4-bit</h3>
-            <p>One citizen photo drives five tasks: complaint classification (<strong>76% accuracy</strong>), Arabic description generation, day/night-invariant duplicate detection, objective priority assessment that overrides exaggerated reports, and before/after repair verification for contractors.</p>
+            <p>One citizen photo drives five tasks: complaint classification, Arabic description generation, day/night-invariant duplicate detection, objective priority assessment that overrides exaggerated reports, and before/after repair verification for contractors.</p>
           </li>
           <li>
             <h3>Saudi-dialect voice complaints — Whisper + Qwen</h3>
-            <p>Whisper-medium fine-tuned on <strong>SADA22</strong> (420 hours of Saudi Arabic speech) transcribes voice notes; Qwen2.5-3B-Instruct cleans the raw transcript while preserving the local dialect. ALLaM was tested, Qwen won on instruction-following.</p>
+            <p>Whisper-medium fine-tuned on <strong>SADA22</strong> (420 hours of Saudi Arabic speech) transcribes voice notes; Qwen2.5-3B-Instruct cleans the raw transcript while preserving the local dialect. The two models form the voice-processing pipeline.</p>
           </li>
           <li>
             <h3>SLA prediction — Random Forest</h3>
-            <p>A 300-estimator RandomForestRegressor predicts resolution time in days from category, priority, timestamp, and location — <strong>R² = 0.963</strong>, so citizens get a real date instead of a shrug.</p>
+            <p>A 300-estimator RandomForestRegressor estimates resolution time in days from category, priority, timestamp, and location as part of the academic prototype.</p>
           </li>
           <li>
             <h3>Proactive forecasting — ConvLSTM on the real street grid</h3>
@@ -163,7 +161,7 @@
           </li>
           <li>
             <h3>Gradio operations dashboards</h3>
-            <p>Every module ships with an interactive dashboard — urban radar heatmap, report lifecycle, KPI summaries, and the chat interfaces. Not a demo: the operating console.</p>
+            <p>Interactive Gradio dashboards demonstrate the prototype modules — urban radar heatmap, report lifecycle, KPI summaries, and chat interfaces.</p>
           </li>
         </ol>
 
@@ -190,15 +188,6 @@
 
     <section class="case-section">
       <div class="container">
-        <header class="section-head reveal">
-          <p class="section-label mono"><span class="label-dot" aria-hidden="true"></span>results</p>
-        </header>
-        <ul class="stats-grid reveal" aria-label="Key results">
-          <li class="stat-card"><p class="stat-value">0.963</p><p class="stat-label">R² — SLA prediction</p></li>
-          <li class="stat-card"><p class="stat-value">76%</p><p class="stat-label">VLM classification accuracy</p></li>
-          <li class="stat-card"><p class="stat-value">6 <span class="mono">on 1</span></p><p class="stat-label">models on a single T4 GPU</p></li>
-          <li class="stat-card"><p class="stat-value">32×32</p><p class="stat-label">street-grid forecast resolution</p></li>
-        </ul>
         <ul class="chips reveal" aria-label="Stack"><li>PyTorch</li><li>Qwen2-VL</li><li>Whisper</li><li>ConvLSTM</li><li>Random Forest</li><li>RAG</li><li>Gradio</li><li>BitsAndBytes</li></ul>
       </div>
     </section>
